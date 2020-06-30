@@ -7,17 +7,13 @@ import { Toast } from 'native-base'
 
 
 export function* loginUser(data) {
-
-
 	try {
-		const user = yield call(userService.loginUser, data)
-		const userData = user && user.success && user.data && user.data.token ? user.data : null
+		const userData = yield call(userService.loginUser, data);
 		if (userData) {
 			yield put(UserActions.userLoginSuccess(userData));
 
 		} else {
 			yield put(UserActions.userLoginFailure())
-
 		}
 	} catch (error) {
 		yield put(UserActions.userLoginFailure())
@@ -36,15 +32,12 @@ export function* loginUser(data) {
 
 
 export function* watchUserLoginRequest() {
-while (true) {
+	while (true) {
 		const { data } = yield take(UserTypes.LOGIN_USER)
 
         console.log('im in saga');
 		yield call(loginUser, data)
-
-
-
-		}
+	}
 
 }
 

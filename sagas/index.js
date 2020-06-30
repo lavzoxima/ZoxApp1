@@ -4,11 +4,7 @@ import { watchUserLoginRequest } from 'ZoxApp1/sagas/usersaga';
 
 
 export default function* rootSaga() {
-  console.log('im in rootsaga');
     yield all([
-        fork(watchUserLoginRequest),
-
-
+        fork(watchUserLoginRequest)
     ]);
-
 }

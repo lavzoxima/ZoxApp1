@@ -8,18 +8,14 @@ import UserActions from 'ZoxApp1/store/user/Actions'
 import Feather from 'react-native-vector-icons/Feather';
 import Style from 'ZoxApp1/screens/logInStyle'
 
-class   LogInScreen extends Component {
+class  LogInScreen extends Component {
 
              submit = () => {
-
-
                     this.props.loginUser({
-
-                    password: this.props.password,
+                      password: this.props.password,
                       number: this.props.number
                     });
 
-                     console.log('im in submit');
 
                 }
 
@@ -75,7 +71,7 @@ class   LogInScreen extends Component {
 
                              }
 
-                            onPress={this.submit}
+                            onPress={() => this.submit()}
 
                           >
 
@@ -91,7 +87,7 @@ class   LogInScreen extends Component {
 
 
                            </View>
-      </View>
+                </View>
 
 
 
@@ -101,7 +97,6 @@ class   LogInScreen extends Component {
 };
 
 const mapStateToProps = (state) => ({
-
   number: state.user.number,
   password: state.user.password,
   userLoginIsLoading: state.user.userLoginIsLoading,

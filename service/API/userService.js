@@ -10,7 +10,6 @@ const in200s = isWithin(200, 299)
 
 
 function loginUser(params) {
-    console.log('im here');
   return axios.post(Config.ACCESS_URL, params).then((response) => {
     if (in200s(response.status)) {
         console.log(response.data)
