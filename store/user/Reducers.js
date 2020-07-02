@@ -18,7 +18,7 @@ export const userLoginLoading = (state) => ({
 export const userLoginSuccess = (state, { user }) => ({
   ...state,
   id: user.id,
-  token: user.token,
+  token: user.access_token,
       userLoginIsLoading: false,
       userLoginErrorMessage: null
 });

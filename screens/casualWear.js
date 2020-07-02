@@ -31,9 +31,7 @@ class   CasualWearScreen extends Component {
 
 componentDidMount() {
 
-const {
-      		productList,
-    	} = this.props;
+
 
 
 this.props.fetchProducts({
@@ -41,6 +39,12 @@ this.props.fetchProducts({
       token     : this.props.token,
       agentid   : this.props.agentid
     })
+
+ const {
+       		productList,
+     	} = this.props;
+
+console.log(this.props.productList)
   }
 
 render() {
