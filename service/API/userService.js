@@ -22,9 +22,32 @@ function loginUser(params) {
   });
 }
 
+function getProductDetails(params) {
+
+        console.log('im here2');
+  return axios.get( Config.ALL_PRODUCT_URL,
+ {
+    headers: {
+      Authorization: 'Bearer ' + params.token,
+      agentid: params.agentid,
+      'Content-Type': 'application/json'
+    }
+  }).then((response) => {
+    if (in200s(response.status)) {
+      return response['data']['data'];
+    }
+    return null
+  }).catch(error => {
+    console.log(error)
+    return null
+  });
+}
+
 
 export const userService = {
 
   loginUser,
+   getProductDetails,
+
 
 }

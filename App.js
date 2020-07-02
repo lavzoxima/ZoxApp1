@@ -21,6 +21,8 @@ import SignUpDetail from 'ZoxApp1/screens/signUpDetail'
 import RouterComponent from 'ZoxApp1/Router'
 import rootSaga from 'ZoxApp1/sagas';
 import { createLogger } from 'redux-logger';
+import {RootApp} from 'ZoxApp1/Naviagators/navigations'
+import * as NavigationService from 'ZoxApp1/service/util/NavigationService'
 
 
 const sagaMiddleware = createSagaMiddleware();
@@ -28,10 +30,19 @@ let store = createStore(rootReducer, applyMiddleware(sagaMiddleware, createLogge
 sagaMiddleware.run(rootSaga);
 
 class App extends Component {
+
+ componentDidMount() {
+    NavigationService.setNavigator(this.navigator);
+  }
  render(){
     return (
      <Provider store={store} >
-       <RouterComponent/>
+       <RootApp
+       ref={nav => {
+                 this.navigator = nav;
+               }}
+
+       />
      </Provider>
     );
   }

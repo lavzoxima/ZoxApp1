@@ -3,7 +3,7 @@ import { UserTypes } from 'ZoxApp1/store/user/Actions'
 import UserActions from 'ZoxApp1/store/user/Actions'
 import { userService } from 'ZoxApp1/service/API/userService'
 import { Toast } from 'native-base'
-
+import * as NavigationService from 'ZoxApp1/service/util/NavigationService'
 
 
 export function* loginUser(data) {
@@ -11,6 +11,7 @@ export function* loginUser(data) {
 		const userData = yield call(userService.loginUser, data);
 		if (userData) {
 			yield put(UserActions.userLoginSuccess(userData));
+            NavigationService.navigate( 'CasualWearScreen');
 
 		} else {
 			yield put(UserActions.userLoginFailure())

@@ -16,7 +16,7 @@ class  LogInScreen extends Component {
                       number: this.props.number
                     });
 
-
+                   console.log('im in submit')
                 }
 
 

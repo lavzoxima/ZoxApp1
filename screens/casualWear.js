@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -19,13 +19,35 @@ import {
   StatusBar,
   Image,
 } from 'react-native';
-
+import {connect} from 'react-redux'
 import { Container, Content, Header, Left, Right, Icon, Item, Input, Card, CardItem ,Body, Title} from 'native-base'
 import FAIcon from 'react-native-vector-icons/FontAwesome'
+import ProductActions from 'ZoxApp1/store/product/Actions'
 import RecommendedCardItem from 'ZoxApp1/components/RecommendedCardItem'
 
 
-export default function  casualWear() {
+
+class   CasualWearScreen extends Component {
+
+componentDidMount() {
+
+const {
+      		productList,
+    	} = this.props;
+
+
+this.props.fetchProducts({
+
+      token     : this.props.token,
+      agentid   : this.props.agentid
+    })
+  }
+
+render() {
+
+const {
+      		productList,
+    	} = this.props;
 
 return (
       <Container>
@@ -75,6 +97,8 @@ return (
    </View>
    </TouchableOpacity>
     </View>
+                                         <FAIcon name= 'filter' style={{ fontSize: 30, color: 'red' }} />
+
      <View style={{ position: 'absolute', left: 0, right: 0, top: '20%', height: '10%', backgroundColor: '#dcdcdc', flexDirection: 'row', alignItems: 'center',   justifyContent: 'space-between' }}>
          <View style={{ flex: 1, height: "100%", marginLeft: '5%', marginRight: '5%' ,justifyContent: 'center' }}>
                                 <Item style={{ backgroundColor: 'white', paddingHorizontal: 15, borderRadius: 10,}}>
@@ -82,74 +106,59 @@ return (
                                     <Icon name="search" style={{ fontSize: 20, paddingTop: 5 ,  }} />
                                     <Input placeholder="Search"   />
 
-                                         <FAIcon name= 'filter' style={{ fontSize: 30, color: 'red' }} />
-
                                 </Item>
                             </View>
 
         </View>
-         <Content style={{  top: '-29%', backgroundColor: '#d5d5d6'}}>
-            <Card style={{ marginLeft: '5%', marginRight: '5%', marginTop: 5  }}>
+         <Content style={{  top: '-20 %', backgroundColor: '#d5d5d6'}}>
+            <Card style={{ marginLeft: '5%', marginRight: '5%', marginTop: 5  }}
+             dataArray={this.props.productList}
+
+                 renderRow={(item) => {
+                         return (
+                           <RecommendedCardItem  productList={item} />
+                         )
+                     }}
 
 
-                <RecommendedCardItem
-                 itemName="ZARA"
-                  itemCreator="Printed Top"
-                  itemPrice="Rs. 2999"
-                   itemPriceActual=" 3999"
-                  savings="25"
-                  imageUri={require("Nodeback/assests/img1.jpeg")}
-                  rating={5}
-                />
-
-
-            </Card>
-            <Card style={{ marginLeft: '5%', marginRight: '5%', marginTop: 5  }}>
-
-                      <RecommendedCardItem
-                                     itemName="ZARA "
-                                      itemCreator="Solid Shirt Style Top"
-                                      itemPrice=" Rs. 700"
-                                       itemPriceActual=" 1029"
-                                      savings="25"
-                                      imageUri={require("Nodeback/assests/img2.jpeg")}
-                                      rating={4}
-                                    />
+            />
 
 
 
-
-                        </Card>
-
-
-                         <Card style={{ marginLeft: '5%', marginRight: '5%', marginTop: 5  }}>
-
-                                              <RecommendedCardItem
-                                                             itemName="INDIAN TERRAIN"
-                                                              itemCreator="Cotton Shirt With Button Flap Pockets "
-                                                              itemPrice=" Rs. 637"
-                                                              itemPriceActual=" 1029"
-                                                              savings="25"
-                                                              imageUri={require("Nodeback/assests/img3.jpeg")}
-                                                              rating={2.5}
-                                                            />
-
-
-
-
-                                                </Card>
 
 
 
 
  </Content>
 
-      </Container>
+ </Container>
 );
 
-
+}
 
 }
+const mapStateToProps = (state) => ({
+    token                    : state.user.token,
+    agentid                  : state.user.id,
+    productList              : state.product.productList
+
+});
+
+const mapDispatchToProps = (dispatch)  => ({
+ fetchProducts:(params)   => dispatch(ProductActions.fetchProducts(params)),
+});
+
+
+
+
+
+
+
+
+export default connect(
+mapStateToProps ,
+ mapDispatchToProps)
+ (CasualWearScreen)
 
 
 
