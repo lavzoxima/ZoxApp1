@@ -35,7 +35,7 @@ function getProductDetails(params) {
   }).then((response) => {
     if (in200s(response.status)) {
         console.log(response.data)
-      return response.data;
+      return response['data'];
     }
     return null
   }).catch(error => {

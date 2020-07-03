@@ -59,9 +59,9 @@ return (
 
 <Left style={{ flexDirection: 'row' }}>
 
-                        <FAIcon name="chevron-left" style={{ fontSize: 30, color: 'red' }} />
+                        <FAIcon name="chevron-left" style={{ fontSize: 30, color: 'red' , marginRight: '0%'}} />
                          <Body>
-                          <Title style={{ fontSize:35, color: '#a9a9a9' , marginRight: '30%', marginBottom: 10}}>Casual Wear</Title>
+                          <Title style={{ fontSize:35, color: '#a9a9a9' , marginRight: '0%', marginBottom: 10}}>Casual Wear</Title>
                                                       </Body>
                     </Left>
 
@@ -101,7 +101,6 @@ return (
    </View>
    </TouchableOpacity>
     </View>
-                                         <FAIcon name= 'filter' style={{ fontSize: 30, color: 'red' }} />
 
      <View style={{ position: 'absolute', left: 0, right: 0, top: '20%', height: '10%', backgroundColor: '#dcdcdc', flexDirection: 'row', alignItems: 'center',   justifyContent: 'space-between' }}>
          <View style={{ flex: 1, height: "100%", marginLeft: '5%', marginRight: '5%' ,justifyContent: 'center' }}>
@@ -109,23 +108,30 @@ return (
 
                                     <Icon name="search" style={{ fontSize: 20, paddingTop: 5 ,  }} />
                                     <Input placeholder="Search"   />
+                                 <FAIcon name= 'filter' style={{ fontSize: 30, color: 'red' }} />
 
                                 </Item>
                             </View>
 
         </View>
-         <Content style={{  top: '-20 %', backgroundColor: '#d5d5d6'}}>
+         <Content style={{  top: ' -20%', backgroundColor: '#d5d5d6'}}>
+
+
             <Card style={{ marginLeft: '5%', marginRight: '5%', marginTop: 5  }}
-             dataArray={this.props.productList}
+
+
+           dataArray={this.props.productList}
 
                  renderRow={(item) => {
                          return (
-                           <RecommendedCardItem  productList={item} />
+                           <RecommendedCardItem  data={item} />
                          )
                      }}
 
 
             />
+
+
 
 
 
