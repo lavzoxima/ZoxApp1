@@ -30,7 +30,11 @@ import RecommendedCardItem from 'ZoxApp1/components/RecommendedCardItem'
 class   CasualWearScreen extends Component {
 
 componentDidMount() {
+const {
+       		productList,
+     	} = this.props;
 
+console.log(this.props.productList)
 
 
 
@@ -40,11 +44,7 @@ this.props.fetchProducts({
       agentid   : this.props.agentid
     })
 
- const {
-       		productList,
-     	} = this.props;
 
-console.log(this.props.productList)
   }
 
 render() {

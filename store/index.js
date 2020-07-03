@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { reducer as UserReducer } from 'ZoxApp1/store/user/Reducers'
-import { reducer as ProductReducer } from 'ZoxApp1/store/user/Reducers'
+import { reducer as ProductReducer } from 'ZoxApp1/store/product/Reducers'
 const rootReducer = combineReducers({
 
    user: UserReducer,

@@ -1,6 +1,6 @@
-import { INITIAL_STATE } from './initialState'
+import { INITIAL_STATE } from 'ZoxApp1/store/product/intialState'
 import { createReducer } from 'reduxsauce'
-import { ProductTypes } from './Actions'
+import { ProductTypes } from 'ZoxApp1/store/product/Actions'
 
 
 
