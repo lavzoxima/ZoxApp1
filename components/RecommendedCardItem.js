@@ -3,7 +3,8 @@ import {
     View,
     Text,
     StyleSheet,
-    Image
+    Image,
+   FlatList
 } from "react-native";
 
 import { Card, CardItem, Right } from 'native-base'

@@ -18,6 +18,7 @@ import {
   Button,
   StatusBar,
   Image,
+  FlatList
 } from 'react-native';
 import {connect} from 'react-redux'
 import { Container, Content, Header, Left, Right, Icon, Item, Input, Card, CardItem ,Body, Title} from 'native-base'
@@ -28,6 +29,7 @@ import RecommendedCardItem from 'ZoxApp1/components/RecommendedCardItem'
 
 
 class   CasualWearScreen extends Component {
+
 
 componentDidMount() {
 const {
@@ -46,6 +48,23 @@ this.props.fetchProducts({
 
 
   }
+
+
+ renderListItem=({item,index}) => {
+ return(
+ <View>
+     <Image style={{width:100, height:100}}
+         source={{uri :item.url}} />
+     <View>
+        <Text> {item.Name}   </Text>
+         <Text> {item.Product_Group__c}   </Text>
+
+ </View>
+ </View>
+
+ )
+ }
+
 
 render() {
 
@@ -114,32 +133,19 @@ return (
                             </View>
 
         </View>
-         <Content style={{  top: ' -20%', backgroundColor: '#d5d5d6'}}>
 
-
-            <Card style={{ marginLeft: '5%', marginRight: '5%', marginTop: 5  }}
-
-
-           dataArray={this.props.productList}
-
-                 renderRow={(item) => {
-                         return (
-                           <RecommendedCardItem  data={item} />
-                         )
-                     }}
-
+        <View>
+            <FlatList
+            data={this.props.productList}
+            renderItem={({item,index}) =>this.renderListItem(item,index)}
+            KeyExtractor={({item,index}) =>index.toString()}
 
             />
 
 
+        </View>
 
 
-
-
-
-
-
- </Content>
 
  </Container>
 );
