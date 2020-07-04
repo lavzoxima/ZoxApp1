@@ -36,7 +36,6 @@ const {
        		productList,
      	} = this.props;
 
-console.log(this.props.productList)
 
 
 
@@ -50,19 +49,17 @@ this.props.fetchProducts({
   }
 
 
- renderListItem=({item,index}) => {
- return(
- <View>
-     <Image style={{width:100, height:100}}
-         source={{uri :item.url}} />
-     <View>
-        <Text> {item.Name}   </Text>
-         <Text> {item.Product_Group__c}   </Text>
-
- </View>
- </View>
-
- )
+ renderListItem(item,index){
+   return(
+      <View>
+         <Image style={{width:100, height:100}}
+            source={{uri :item.url}} />
+        <View>
+          <Text> {item.Name}   </Text>
+          <Text> {item.Product_Group__c}</Text>
+        </View>
+     </View>
+    );
  }
 
 
@@ -72,6 +69,7 @@ const {
       		productList,
     	} = this.props;
 
+console.log('productList', productList)
 return (
       <Container>
       <Header style={{ backgroundColor: '#fff', height: '42%', borderBottomColor: '#757575' }}>
@@ -135,14 +133,13 @@ return (
         </View>
 
         <View>
-            <FlatList
-            data={this.props.productList}
-            renderItem={({item,index}) =>this.renderListItem(item,index)}
-            KeyExtractor={({item,index}) =>index.toString()}
-
-            />
-
-
+          {
+            productList && productList.length ? <FlatList
+              data={productList}
+               renderItem={({ item, index })=> this.renderListItem(item,index)}
+              keyExtractor={(item) => item.Id}
+            /> : <Text>Loading Product list</Text>
+          }
         </View>
 
 

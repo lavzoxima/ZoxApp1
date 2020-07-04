@@ -24,7 +24,6 @@ function loginUser(params) {
 
 function getProductDetails(params) {
 
-        console.log('im here2');
   return axios.get( Config.ALL_PRODUCT_URL,
  {
     headers: {
@@ -34,8 +33,7 @@ function getProductDetails(params) {
     }
   }).then((response) => {
     if (in200s(response.status)) {
-        console.log(response.data)
-      return response['data'];
+      return response['data']['records'];
     }
     return null
   }).catch(error => {

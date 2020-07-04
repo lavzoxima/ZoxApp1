@@ -7,7 +7,7 @@ import { ProductTypes } from 'ZoxApp1/store/product/Actions'
 export const fetchProductsSuccess = (state, {payload}) => {
     return {
       	...state,
-      	productList: [payload],
+      	productList: payload,
       	fetchProductsLoader: false
     }
 };
