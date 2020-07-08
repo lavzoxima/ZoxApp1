@@ -24,7 +24,7 @@ function loginUser(params) {
 
 function getProductDetails(params) {
 
-  return axios.get( Config.ALL_PRODUCT_URL,
+  return axios.get( Config.ALL_PRODUCT_PRICE_URL,
  {
     headers: {
       Authorization: 'Bearer ' + params.token,
