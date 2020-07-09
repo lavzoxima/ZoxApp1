@@ -2,7 +2,7 @@ import { put, call, take, select } from 'redux-saga/effects'
 
 
 import { VisitsTypes } from 'ZoxApp1/store/cart/Actions'
-import VisitsActions from 'ZoxApp1/Stores/cart/Actions'
+import VisitsActions from 'ZoxApp1/store/cart/Actions'
 
 import { Toast } from 'native-base'
 

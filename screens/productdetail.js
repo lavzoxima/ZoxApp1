@@ -24,13 +24,23 @@ submit = () => {
    			removeItemFromCart
    		} = this.props;
 
-   		if (params.quantity__c == 0) {
-   			removeItemFromCart(params);
-   		}else {
+
+
    			addItemToCart(params)
-   		}
+
    	}
 
+onChangeQuantity1(params) {
+   		const {
+   		 	addItemToCart,
+   			removeItemFromCart
+   		} = this.props;
+
+
+   			removeItemFromCart(params);
+
+
+   	}
 
 	isPresentInCartValue(itemId) {
   		const {
@@ -40,7 +50,7 @@ submit = () => {
 	   let itemPresentValue = 0;
 	   cart.items.map((obj) => {
 	   		if (obj.item__c == itemId) {
-	   			itemPresentValue = obj.quantity__c
+	   			itemPresentValue = obj.unique_product_count__c
 	   		}
 	   });
 	   return itemPresentValue
@@ -117,9 +127,9 @@ return (
                  </Left>
                  <Right >
                  <View style={{flexDirection: 'row', justifyContent:'center' }}>
-                 <AntDesign.Button name="minuscircle" size={30}   onPress={() => this.submit()}   backgroundColor="#3b5998" />
-                 <Text > 4 </Text>
-                 <AntDesign.Button name="pluscircle" size={30}  onPress={() => this.submit()} backgroundColor="#3b5998"/>
+                 <AntDesign.Button name="minuscircle" size={30}   onPress={() => this.onChangeQuantity1({item__c:id,Data: data})}   backgroundColor="#3b5998" />
+                 <Text > {this.isPresentInCartValue(id)}</Text>
+                 <AntDesign.Button name="pluscircle" size={30}  onPress={() => this.onChangeQuantity({item__c:id, Data: data})} backgroundColor="#3b5998"/>
                  </View>
                  </Right>
 
