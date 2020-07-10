@@ -15,6 +15,21 @@ import VisitsActions from 'ZoxApp1/store/cart/Actions'
 
  class CardImageExample extends Component {
 
+isPresentInCartValue(itemId) {
+  		const {
+	      cart
+	    } = this.props;
+
+	   let itemPresentValue = 0;
+	   cart.items.map((obj) => {
+	   		if (obj.item__c == itemId) {
+	   			itemPresentValue = obj.Quantity__c
+	   		}
+	   });
+	   return itemPresentValue
+  	}
+
+
  onChangeQuantity(params) {
    		const {
    		 	addItemToCart,
@@ -39,19 +54,7 @@ onChangeQuantity1(params) {
 
    	}
 
-	isPresentInCartValue(itemId) {
-  		const {
-	      cart
-	    } = this.props;
 
-	   let itemPresentValue = 0;
-	   cart.items.map((obj) => {
-	   		if (obj.item__c == itemId) {
-	   			itemPresentValue = obj.Quantity__c
-	   		}
-	   });
-	   return itemPresentValue
-  	}
 
     componentDidMount() {
        const {
@@ -122,9 +125,9 @@ return (
                  </Left>
                  <Right >
                  <View style={{flexDirection: 'row', justifyContent:'center' }}>
-                 <AntDesign.Button name="minuscircle" size={30}   onPress={() => this.onChangeQuantity1({item__c:id,Data: data})}   backgroundColor="#3b5998" />
+                 <AntDesign.Button name="minuscircle" size={30}   onPress={() => this.onChangeQuantity1({item__c:id,Data: data, Quantity__c : this.isPresentInCartValue(id)})}   backgroundColor="#3b5998" />
                  <Text > {this.isPresentInCartValue(id)}</Text>
-                 <AntDesign.Button name="pluscircle" size={30}  onPress={() => this.onChangeQuantity({item__c:id, Data: data, Quantity__c : this.props.quantity })} backgroundColor="#3b5998"
+                 <AntDesign.Button name="pluscircle" size={30}  onPress={() => this.onChangeQuantity({item__c:id, Data: data, Quantity__c : this.isPresentInCartValue(id) })} backgroundColor="#3b5998"
 
                  />
                  </View>

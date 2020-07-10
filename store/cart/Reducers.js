@@ -12,7 +12,9 @@ export const addItemToCartSuccess = (state, { payload }) => {
         ...state,
 
         cart: _.cloneDeep(payload),
-       
+
+
+
 
     }
 };

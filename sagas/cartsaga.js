@@ -20,6 +20,9 @@ export function* addItemToCart({ payload }) {
 			console.log('im in if')
 			obj.Quantity__c = obj.Quantity__c +1
 
+		       quantity= obj.Quantity__c
+
+
 
 		}
 		return obj;
@@ -29,14 +32,36 @@ export function* addItemToCart({ payload }) {
 		cart.items.push(payload)
 	}
 
-	yield put(VisitsActions.addItemToCartSuccess(cart))
+	yield put(VisitsActions.addItemToCartSuccess(cart,))
 
 }
 
 export function* removeItemFromCart({ payload }) {
 	let cart = yield select(state => state.visits.cart);
 	let itemAlreadyPresent = false;
-	cart.items = cart.items.filter((obj) => obj.item__c != payload.item__c);
+
+	if(cart.items.Quantity__c==1){
+	cart.items = cart.items.filter((obj) => obj.item__c != payload.item__c);}
+
+	cart.items = cart.items.map((obj) => {
+    		if (obj.item__c == payload.item__c) {
+    			obj = payload
+    			itemAlreadyPresent = true
+    			console.log('im in if')
+    			obj.Quantity__c = obj.Quantity__c -1
+
+
+
+
+
+    		}
+    		return obj;
+    	});
+
+
+
+
+
 	yield put(VisitsActions.removeItemFromCartSuccess(cart))
 
 }

@@ -41,14 +41,15 @@ concolor: {
 backgroundColor: "#F1EFEF",
 },
 straight: {
-fontSize:20,
-marginLeft: -60,
+fontSize:15,
+
+   marginBottom: '8%',
  fontWeight: "bold",
  color: "#7F7E7E",
  fontFamily: "arial",
 },
 size: {
-fontSize:20,
+fontSize:15,
  color: "#7F7E7E",
  fontFamily: "arial",
  marginTop: -100,

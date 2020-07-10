@@ -74,22 +74,22 @@ renderListItem(item,index){
    <Card transparent >
    <CardItem>
    <Left>
-   <Image  source={{uri : item.Data.url}}  style={{height:100, borderRadius: 60, width:90}}/>
-   </Left>
-   <Right>
 
-   <Text style={styles.straight}>{item.Data.Name}</Text></Right></CardItem>
+   <Image  source={{uri : item.Data.url}}  style={{height:100, borderRadius: 60, width:90}}/>
+     <Text style={styles.straight}>{item.Data.Name}</Text>
+   </Left>
+  </CardItem>
    <CardItem>
    <Left>
    <Text style={styles.size}> Size 7, Green </Text></Left></CardItem>
    <CardItem>
    <Left>
-   <Text style={styles.ruppee}>  {'\u20B9'} 5000 </Text></Left>
+   <Text style={styles.ruppee}>  {'\u20B9'} 5000  </Text></Left>
    </CardItem>
    <CardItem>
    <Left>
 
-   <Text style={styles.buttonplusminus}> <AntDesign style={styles.plusminuscircle} name="minuscircle" size={30}/> 4  <AntDesign style={styles.plusminuscircle} name="pluscircle" size={30}/></Text>
+   <Text style={styles.buttonplusminus}> <AntDesign style={styles.plusminuscircle} name="minuscircle" size={30}/> {item.Quantity__c} <AntDesign style={styles.plusminuscircle} name="pluscircle" size={30}/></Text>
    </Left>
    </CardItem>
    </Card>
@@ -132,8 +132,8 @@ return (
  <View style={{marginTop:'5%', backgroundColor: '#f5f5f5', marginBottom: '5%',}}>
           {
 
-            cart && cart.length ? <FlatList
-              data={cart}
+            cart.items && cart.items.length ? <FlatList
+              data={cart.items}
                renderItem={({ item, index })=> this.renderListItem(item,index)}
               keyExtractor={(item) => item.Data.Id}
             /> : <Text>Loading ....</Text>
