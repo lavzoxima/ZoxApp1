@@ -14,10 +14,7 @@ import VisitsActions from 'ZoxApp1/store/cart/Actions'
 
 
  class CardImageExample extends Component {
-submit = () => {
-                    console.log('in submit')
 
-                }
  onChangeQuantity(params) {
    		const {
    		 	addItemToCart,
@@ -50,7 +47,7 @@ onChangeQuantity1(params) {
 	   let itemPresentValue = 0;
 	   cart.items.map((obj) => {
 	   		if (obj.item__c == itemId) {
-	   			itemPresentValue = obj.unique_product_count__c
+	   			itemPresentValue = obj.Quantity__c
 	   		}
 	   });
 	   return itemPresentValue
@@ -73,11 +70,9 @@ render() {
 const {
       id,
       data
-    } = this.props.navigation.state.params;
+    } = this.props.navigation.state.params
 
-
-
-
+const quantity=''
 return (
   <Container>
      <Header style={styles.header}>
@@ -129,10 +124,11 @@ return (
                  <View style={{flexDirection: 'row', justifyContent:'center' }}>
                  <AntDesign.Button name="minuscircle" size={30}   onPress={() => this.onChangeQuantity1({item__c:id,Data: data})}   backgroundColor="#3b5998" />
                  <Text > {this.isPresentInCartValue(id)}</Text>
-                 <AntDesign.Button name="pluscircle" size={30}  onPress={() => this.onChangeQuantity({item__c:id, Data: data})} backgroundColor="#3b5998"/>
+                 <AntDesign.Button name="pluscircle" size={30}  onPress={() => this.onChangeQuantity({item__c:id, Data: data, Quantity__c : this.props.quantity })} backgroundColor="#3b5998"
+
+                 />
                  </View>
                  </Right>
-
 
                  </CardItem>
 
@@ -217,6 +213,7 @@ const mapStateToProps = (state) => ({
     agentid                  : state.user.id,
     productList              : state.product.productList,
      cart 						: state.visits.cart,
+     quantity : state.visits.quantity,
 
 });
 const mapDispatchToProps = (dispatch) => ({

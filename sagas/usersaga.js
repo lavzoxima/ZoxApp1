@@ -11,7 +11,7 @@ export function* loginUser(data) {
 		const userData = yield call(userService.loginUser, data);
 		if (userData) {
 			yield put(UserActions.userLoginSuccess(userData));
-            NavigationService.navigate( 'CasualWearScreen');
+            NavigationService.navigate( 'FooterScreen');
 
 		} else {
 			yield put(UserActions.userLoginFailure())

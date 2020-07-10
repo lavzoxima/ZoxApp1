@@ -10,7 +10,10 @@ export const addItemToCartSuccess = (state, { payload }) => {
     //console.log('addItemToCartSuccess', payload)
     return {
         ...state,
-        cart: _.cloneDeep(payload)
+
+        cart: _.cloneDeep(payload),
+       
+
     }
 };
 

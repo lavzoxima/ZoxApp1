@@ -23,7 +23,7 @@ export default function* rootSaga() {
            takeLatest(VisitsTypes.ADD_ITEM_TO_CART, addItemToCart),
           takeLatest(VisitsTypes.REMOVE_ITEM_FROM_CART, removeItemFromCart),
 
-            takeLatest(VisitsTypes.EDIT_CART_ORDER, editCartOrder),
+
 
 
 
