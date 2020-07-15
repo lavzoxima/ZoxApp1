@@ -1,71 +1,75 @@
 import React, {Component} from 'react';
 import { View, Text, Button, StyleSheet,TextInput , TouchableOpacity, Image,ScrollView } from 'react-native';
-import { Container,Card, CardItem, Right } from 'native-base'
+import { Container, Content, Header, Left, Right, Icon, Item, Input, Card, CardItem ,Body, Title,Tab, Tabs} from 'native-base'
+import Style from 'ZoxApp1/screens/splashScreenStyle.js'
 import {connect} from 'react-redux'
+import UserActions from 'ZoxApp1/store/user/Actions'
+import UserRegisterActions from 'ZoxApp1/store/SignUp/Actions'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-picker'
 import SignUpCardItem from  'ZoxApp1/components/SignUpCardItem'
 import LocationSettings from  'ZoxApp1/components/locationSettings'
-
+import LocationScreen from 'ZoxApp1/screens/location'
+import ManLocationScreen from 'ZoxApp1/screens/manualLocation'
 
 class SignUpDetail extends Component {
 
- state = {
-    photo: null,
-  };
-
-handleChoosePhoto =() =>{
-const options={
-NoData : true
-
-}
-ImagePicker.launchImageLibrary(
-options, response=>{
-console.log("response", response );
-
-if(response.uri)
-{
-this.setState({photo:response});
-
-}
-
-}
-
-);
+componentDidMount() {
 
 
-}
+
+
+ this.props.loginUser();
+
+
+  }
+    submit = () => {
+                     this.props.RegisterUser({
+                        token     : this.props.token,
+                            agentid   : this.props.agentid,
+                             LastName: this.props.LastName,
+                             Password: this.props.Password,
+                              Email:this.props.Email,
+                              Phone: this.props.Phone,
+                              City:this.props.City,
+                              FirstName: this.props.FirstName,
+                     });
+
+
+                 }
+
 
 
 
  render(){
 
-    const { photo } =this.state;
+
 return (
       <ScrollView  style={{backgroundColor: '#f5f5f5',flex:1}}>
 
 
-            <View style={{}}>
-      <Image
-        source={require('ZoxApp1/assests/img5.png')}
-        style={{width:'30%', height:'40%', borderRadius:100, marginLeft:'12%', marginTop:'17.5%', borderColor :'#d3d3d3', borderWidth : 2,backgroundColor:'#d3d3d3'}}/>
 
-        </View>
+
+
 
 
          <TouchableOpacity
-            onPress={this.handleChoosePhoto}
 
+             onPress={() => this.submit()}
            style={ [styles.signIn,
             {
              borderColor :'#d3d3d3',
-             borderWidth : 1,
-             marginTop:'-20%'}]
+
+             marginTop:'10%',
+             fontSize:20,
+             fontWeight: 'Bold'
+
+            }]
 
              }>
 
-  <Text style={[styles.textSign,{ color:'#a9a9a9', fontSize:15, fontWeight:'bold'}]}> SET PROFILE PHOTO </Text>
+  <Text style={{ color:'red', fontSize:20, fontWeight:'bold',}}> Next </Text>
 
            </TouchableOpacity>
 
@@ -75,19 +79,65 @@ return (
 
          <SignUpCardItem
 
-                            logo="user-circle"
-                            title ="USERNAME"
-                            example= "EX- LAV AGRAWAL"
+                            logo={"user-circle"}
+                            title ={"First Name"}
+                            placeholder= {"EX- LAV "}
+                            value={this.props.FirstName}
+                            onChange={(value) => this.props.changeLoginForm({FirstName: value, LastName: this.props.LastName,Password: this.props.Password, Email:this.props.Email, Phone: this.props.Phone, City:this.props.City })}
+
                         />
 
         </Card>
+
+
+
+
+
+        <Card style={{ marginLeft: '5%', marginRight: '5%', marginTop: '7%',  }}>
+
+                                                <SignUpCardItem
+
+                                                    logo={"user-o"}
+                                                    title ={"Last Name"}
+                                                    placeholder= {"Ex- Agarwal"}
+                                                      value={this.props.LastName}
+                                                                                onChange={(value) => this.props.changeLoginForm({LastName: value,FirstName: this.props.FirstName,Password: this.props.Password, Email:this.props.Email, Phone: this.props.Phone, City:this.props.City })}
+
+
+
+                                                />
+
+                     </Card>
+
+
+            <Card style={{ marginLeft: '5%', marginRight: '5%', marginTop: '7%', borderRadius:10  }}>
+
+
+                            <SignUpCardItem
+
+                                               logo={"lock"}
+                                               title ={"Password"}
+                                               placeholder= {"Enter Password "}
+                                               value={this.props.Password}
+                                               onChange={(value) => this.props.changeLoginForm({Password: value,FirstName: this.props.FirstName, LastName:this.props.LastName, Email:this.props.Email, Phone: this.props.Phone, City:this.props.City})}
+
+                                           />
+
+                           </Card>
+
+
           <Card style={{ marginLeft: '5%', marginRight: '5%', marginTop: '7%',  }}>
 
                 <SignUpCardItem
 
-                    logo="envelope-open-o"
-                    title ="EMAIL"
-                    example= "EX- Lav.ktm@gmail.com"
+                    logo={"envelope-open-o"}
+                    title ={"EMAIL"}
+                   placeholder= {"EX- Lav.ktm@gmail.com"}
+                    value={this.props.Email}
+
+                  onChange={(value) => this.props.changeLoginForm({Email: value, FirstName: this.props.FirstName, LastName:this.props.LastName,Password: this.props.Password,Phone: this.props.Phone, City:this.props.City,})}
+
+
                 />
 
             </Card>
@@ -95,32 +145,40 @@ return (
 
                             <SignUpCardItem
 
-                                logo="mobile-phone"
-                                title ="PHONE NUMBER"
-                                example= "Enter your Phone Number"
+                                logo={"mobile-phone"}
+                                title ={"PHONE NUMBER"}
+                                placeholder= {"Enter your Phone Number"}
+                                value={this.props.Phone}
+
+                          onChange={(value) => this.props.changeLoginForm({Phone: value,  FirstName: this.props.FirstName, LastName:this.props.LastName,Password: this.props.Password, City:this.props.City,Email:this.props.Email,})}
+
                             />
 
                         </Card>
 
-            <Card style={{ marginLeft: '5%', marginRight: '5%', marginTop: '7%',  }}>
 
-                                        <SignUpCardItem
 
-                                            logo="user-o"
-                                            title ="GENDER"
-                                            example= "MALE OR FEMALE"
-                                        />
+                <Card style={{ marginLeft: '5%', marginRight: '5%', marginTop: '7%',  }}>
 
-                                    </Card>
-            <Card style={{ marginLeft: '5%', marginRight: '5%', marginTop: '7%',  }}>
+                                                     <SignUpCardItem
 
-                <LocationSettings
+                                                         logo={"location-arrow"}
+                                                         title ={"City"}
+                                                       placeholder= {"Name of city"}
+                                                         value={this.props.City}
 
-                                                            logo="location-arrow"
-                                                            title ="LOCATION SETTINGS"
+                                                                                 onChange={(value) => this.props.changeLoginForm({City: value,FirstName: this.props.FirstName, LastName:this.props.LastName,Password: this.props.Password,Phone: this.props.Phone,Email:this.props.Email, })}
 
-                                                        />
-             </Card>
+                                                     />
+
+                          </Card>
+
+
+
+
+
+
+
 
 
 
@@ -128,11 +186,37 @@ return (
     );
 };
 };
+const mapStateToProps = (state) => ({
+    token                    : state.user.token,
+    agentid                  : state.user.id,
+     Email                 :      state.signUp.Email,
+    Password:    state.signUp.Password,
+        Phone :     state.signUp.Phone,
+        City :         state.signUp.City,
+        FirstName:    state.signUp.FirstName,
+        LastName :    state.signUp.LastName,
+
+
+});
+
+const mapDispatchToProps = (dispatch)  => ({
+ loginUser: (data) => dispatch(UserActions.loginUser(data)),
+  RegisterUser: (data) => dispatch(UserRegisterActions.RegisterUser(data)),
+   changeLoginForm : (data) => dispatch(UserRegisterActions.changeLoginForm(data)),
+
+
+});
 
 
 
 
-export default  SignUpDetail;
+
+
+
+export default  connect(
+               mapStateToProps ,
+                mapDispatchToProps)
+ ( SignUpDetail);
 
 
 const styles = StyleSheet.create({
@@ -145,12 +229,12 @@ const styles = StyleSheet.create({
     signIn: {
 
            height: 35,
-           width:'55%',
+
            justifyContent: 'center',
            alignItems: 'center',
            borderRadius: 30,
            marginRight:'5%',
-           marginLeft:'5%',
+           marginLeft:'75%',
            backgroundColor:'#f5f5f5'
 
        },
@@ -161,3 +245,5 @@ const styles = StyleSheet.create({
 
            },
  });
+
+

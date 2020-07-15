@@ -7,4 +7,7 @@ export const INITIAL_STATE = {
 
 	quantity : 1 ,
 
+	total :0,
+
+
 }

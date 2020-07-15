@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import { View, Text, Button, StyleSheet, ScrollView, TouchableHighlight,TouchableOpacity, TextInput,Image } from 'react-native';
 import Style from 'ZoxApp1/screens/otpStyle.js'
 import SignUpScreen from 'ZoxApp1/screens/signUp'
+import * as NavigationService from 'ZoxApp1/service/util/NavigationService'
 
-import {Actions } from 'react-native-router-flux';
+
 
 export default class OtpScreen extends Component{
 constructor(props){
@@ -148,7 +149,7 @@ return(
 </View>
 
 <TouchableOpacity
-                     onPress = {() => Actions.SignUpDetail()}
+                     onPress = {() => NavigationService.navigate('SignUpDetail') }
                       style={ [Style.signIn,
                          {borderColor : '#fff',
                          borderWidth : 1,

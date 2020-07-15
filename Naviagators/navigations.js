@@ -13,9 +13,10 @@ import  FooterScreen from 'ZoxApp1/screens/footer'
 const StackNavigator = createStackNavigator(
   {
    SplashScreen,
+   OtpScreen,
    CasualWearScreen,
    CardImageExample,
-    OtpScreen,
+
      SignUpDetail,
      ListExample,
      FooterScreen,

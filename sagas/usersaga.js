@@ -9,9 +9,10 @@ import * as NavigationService from 'ZoxApp1/service/util/NavigationService'
 export function* loginUser(data) {
 	try {
 		const userData = yield call(userService.loginUser, data);
+		console.log(userData);
 		if (userData) {
 			yield put(UserActions.userLoginSuccess(userData));
-            NavigationService.navigate( 'FooterScreen');
+
 
 		} else {
 			yield put(UserActions.userLoginFailure())
@@ -37,6 +38,7 @@ export function* watchUserLoginRequest() {
 		const { data } = yield take(UserTypes.LOGIN_USER)
 
         console.log('im in saga');
+        console.log(data);
 		yield call(loginUser, data)
 	}
 

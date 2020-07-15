@@ -125,11 +125,9 @@ return (
                  </Left>
                  <Right >
                  <View style={{flexDirection: 'row', justifyContent:'center' }}>
-                 <AntDesign.Button name="minuscircle" size={30}   onPress={() => this.onChangeQuantity1({item__c:id,Data: data, Quantity__c : this.isPresentInCartValue(id)})}   backgroundColor="#3b5998" />
+                 <AntDesign.Button name="minuscircle" size={30}   onPress={() => this.onChangeQuantity1({item__c:id,Data: data, Quantity__c : this.isPresentInCartValue(id), total__c : this.props.total })}   backgroundColor="#3b5998" />
                  <Text > {this.isPresentInCartValue(id)}</Text>
-                 <AntDesign.Button name="pluscircle" size={30}  onPress={() => this.onChangeQuantity({item__c:id, Data: data, Quantity__c : this.isPresentInCartValue(id) })} backgroundColor="#3b5998"
-
-                 />
+                 <AntDesign.Button name="pluscircle" size={30}  onPress={() => this.onChangeQuantity({item__c:id, Data: data, Quantity__c : this.isPresentInCartValue(id), total__c : this.props.total })} backgroundColor="#3b5998"  />
                  </View>
                  </Right>
 
@@ -217,6 +215,7 @@ const mapStateToProps = (state) => ({
     productList              : state.product.productList,
      cart 						: state.visits.cart,
      quantity : state.visits.quantity,
+     total : state.visits.total,
 
 });
 const mapDispatchToProps = (dispatch) => ({

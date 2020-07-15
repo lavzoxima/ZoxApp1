@@ -3,32 +3,28 @@ import { View, Text, Button, StyleSheet,TextInput , TouchableOpacity} from 'reac
 import { Card, CardItem, Right } from 'native-base'
 import {connect} from 'react-redux'
 import { nameChanged} from'ZoxApp1/actions';
-import {Actions } from 'react-native-router-flux';
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import Style from 'ZoxApp1/screens/signUpStyle'
+import * as NavigationService from 'ZoxApp1/service/util/NavigationService'
  class SignUpScreen extends Component {
 
- onNameChange(text)
- {
-
-     this.props.nameChanged(text);
 
 
- }
+onButtonPress()
+         {
 
- onButtonPress()
-        {
-
-        Actions.OtpScreen();
+         NavigationService.navigate('OtpScreen')
 
 
-        }
-
+         }
 
 
 
  render(){
+
+
 return (
       <View style={Style.container}>
 
@@ -51,8 +47,7 @@ return (
 
 
                     <TextInput style={Style. tistyle} autoCapitalize= "none" placeholder = "Enter Your Mobile Number"
-                       onChangeText={this.onNameChange.bind(this)}
-                         value ={this.props.name}
+
 
                       />
                      </Right>
@@ -62,7 +57,7 @@ return (
 
 
            <TouchableOpacity
-                onPress = {() => Actions.OtpScreen()}
+                onPress = {() =>  this.onButtonPress()}
                                           style={ [Style.signIn,
                              {borderColor : '#fff',
                              borderWidth : 1,
@@ -89,20 +84,9 @@ return (
     );
 };
 };
-const mapStateToProps = state =>
-{
-return {
 
 
 
-name: state.auth.name,
 
-};
-
-
-};
-
-
-
-export default connect(mapStateToProps ,{nameChanged}) (SignUpScreen);
+export default  SignUpScreen;
 

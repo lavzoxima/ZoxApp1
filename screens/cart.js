@@ -70,6 +70,7 @@ onChangeQuantity1(params) {
 
 
 renderListItem(item,index){
+
    return(
    <Card transparent >
    <CardItem>
@@ -84,7 +85,7 @@ renderListItem(item,index){
    <Text style={styles.size}> Size 7, Green </Text></Left></CardItem>
    <CardItem>
    <Left>
-   <Text style={styles.ruppee}>  {'\u20B9'} 5000  </Text></Left>
+   <Text style={styles.ruppee}>  {'\u20B9'} {item.total__c} </Text></Left>
    </CardItem>
    <CardItem>
    <Left>
@@ -95,8 +96,11 @@ renderListItem(item,index){
    </Card>
 
 
+
+
     );
  }
+
 
 
 
@@ -107,8 +111,11 @@ const {
       	 cart 	,
     	} = this.props;
 
- console.log(  cart);
- console.log(cart.length);
+ let totalPrice =0;
+ cart.items.forEach((item) => {
+
+       totalPrice += item.total__c;
+     })
 
 
 
@@ -136,7 +143,7 @@ return (
               data={cart.items}
                renderItem={({ item, index })=> this.renderListItem(item,index)}
               keyExtractor={(item) => item.Data.Id}
-            /> : <Text>Loading ....</Text>
+            /> : <Text>No Items in the Cart ....</Text>
           }
 
 
@@ -195,7 +202,7 @@ return (
 <Card>
 <CardItem>
 <Left>
-<Text style={styles.details}>PRICE DETAILS (21 Items)</Text>
+<Text style={styles.details}>PRICE DETAILS ({this.props.cart.items.length}  Items)</Text>
 </Left>
 </CardItem>
 <CardItem>
@@ -246,7 +253,7 @@ return (
 <Text style={styles.tot}>Total</Text>
 </Left>
 <Right>
-<Text style={styles.tors}>{'\u20B9'} 29,000</Text>
+<Text style={styles.tors}>{'\u20B9'} {totalPrice}</Text>
 </Right>
 </CardItem>
 </Card>
@@ -275,7 +282,7 @@ return (
 
                                   <CardItem style={styles.fmar}>
                                     <Left>
-                                <Text style={styles.frs}>{'\u20B9'} 29,000</Text>
+                                <Text style={styles.frs}>{'\u20B9'} </Text>
                                 </Left>
                                 </CardItem>
                                  <CardItem style={styles.fmar1}>
@@ -303,6 +310,7 @@ const mapStateToProps = (state) => ({
     productList              : state.product.productList,
      cart 						: state.visits.cart,
      quantity : state.visits.quantity,
+     total : state.visits.total,
 
 });
 const mapDispatchToProps = (dispatch) => ({

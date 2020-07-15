@@ -10,9 +10,10 @@ const in200s = isWithin(200, 299)
 
 
 function loginUser(params) {
+console.log(params);
   return axios.post(Config.ACCESS_URL, params).then((response) => {
     if (in200s(response.status)) {
-        console.log(response.data)
+        console.log(response )
       return response.data
     }
     return null
@@ -41,12 +42,49 @@ function getProductDetails(params) {
     return null
   });
 }
+function userSignUp(params) {
+let requestParams = {
+     City: params.City,
+
+       Email: params.Email,
+       FirstName: params.FirstName,
+       LastName:params.LastName,
+       Phone: params.Phone,
+       Password:params.Password
+
+  };
+
+
+  return axios.post( Config.SIGN_UP ,  requestParams,
+ {
+    headers: {
+      Authorization: 'Bearer ' + params.token,
+      agentid: params.agentid,
+
+      'Content-Type': 'application/json'
+    }
+  }).then((response) => {
+    if (in200s(response.status)) {
+
+      return response.data;
+    }
+    return null
+  }).catch(error => {
+    console.log(error)
+    return null
+  });
+}
+
+
+
+
 
 
 export const userService = {
 
   loginUser,
    getProductDetails,
+    userSignUp,
 
 
 }
