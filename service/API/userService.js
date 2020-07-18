@@ -11,7 +11,14 @@ const in200s = isWithin(200, 299)
 
 function loginUser(params) {
 console.log(params);
-  return axios.post(Config.ACCESS_URL, params).then((response) => {
+  return axios.post(Config.ACCESS_URL, params,
+  {
+      headers: {
+
+        'Content-Type': 'application/json'
+      }
+    }
+  ).then((response) => {
     if (in200s(response.status)) {
         console.log(response )
       return response.data
@@ -22,6 +29,29 @@ console.log(params);
     return null
   });
 }
+
+function signUpUser(params) {
+console.log(params);
+  return axios.post(Config.ACCESS_URL, params,
+  {
+      headers: {
+
+        'Content-Type': 'application/json'
+      }
+    }
+  ).then((response) => {
+    if (in200s(response.status)) {
+        console.log(response )
+      return response.data
+    }
+    return null
+  }).catch(error => {
+    console.log(error)
+    return null
+  });
+}
+
+
 
 function getProductDetails(params) {
 
@@ -43,14 +73,15 @@ function getProductDetails(params) {
   });
 }
 function userSignUp(params) {
-let requestParams = {
-     City: params.City,
 
-       Email: params.Email,
-       FirstName: params.FirstName,
-       LastName:params.LastName,
-       Phone: params.Phone,
-       Password:params.Password
+
+let requestParams = {
+    
+     Email: params.Email,
+     FirstName: params.FirstName,
+     LastName:params.LastName,
+     Phone: params.Phone,
+    Password:params.Password
 
   };
 
@@ -73,6 +104,27 @@ let requestParams = {
     console.log(error)
     return null
   });
+}
+
+function placeOrder(params) {
+	let url = Config.VISITS_SERVICE.PLACE_ORDER;
+	return visitsApiClient.post(url, params.payload, {
+		headers: {
+			Authorization: 'Bearer ' + params.token,
+			agentid: params.agentid,
+			'Content-Type': 'application/json'
+		}
+	}).then((response) => {
+		debugger
+		if (in200s(response.status)) {
+			return response['data']
+		}
+		return null
+	}).catch(error => {
+		debugger
+		console.log('API FAIL = ', error)
+		return null
+	});
 }
 
 

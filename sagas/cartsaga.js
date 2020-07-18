@@ -19,15 +19,15 @@ export function* addItemToCart({ payload }) {
 			itemAlreadyPresent = true
 			console.log('im in if')
 			obj.Quantity__c = obj.Quantity__c +1
-			 obj.Data.Products_Pricing__r.records = obj.Data.Products_Pricing__r.records.map( (obj1) =>{
+        obj.Data.Products_Pricing__r.records = obj.Data.Products_Pricing__r.records.map( (obj1) =>{
 
-			 obj.total__c= obj1.MRP__c*obj.Quantity__c
+        			 obj.total__c= obj1.MRP__c*obj.Quantity__c
 
+                       return obj1;
 
+        			 }
 
-			 }
-			 )
-
+                    )
 
 
 
@@ -38,20 +38,8 @@ export function* addItemToCart({ payload }) {
 
 	if (!itemAlreadyPresent) {
 		cart.items.push(payload)
-		cart.items = cart.items.map((obj) => {
-        		if (obj.item__c == payload.item__c) {
-        			obj = payload
 
-
-        			obj.Quantity__c = obj.Quantity__c +1
-
-        		       quantity= obj.Quantity__c
-
-
-
-        		}
-        		return obj;
-        	});
+	cart.items.Quantity__c=1
 
 
 
@@ -75,11 +63,11 @@ export function* removeItemFromCart({ payload }) {
     			obj = payload
 
     			console.log('im in if')
-    			if(obj.Quantity__c >1){
+    			if(obj.Quantity__c >=1){
     			obj.Quantity__c = obj.Quantity__c -1
     			}
 
-    			if(obj.Quantity__c <=1){
+    			if(obj.Quantity__c ==0){
 
     			itemAlreadyPresent = false;
 

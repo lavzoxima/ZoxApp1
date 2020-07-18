@@ -20,7 +20,7 @@ import { createActions } from 'reduxsauce'
  */
 const { Types, Creators } = createActions({
 
-
+    SignUpUser: ['data'],
 	RegisterUser: ['data'],// data coming from from will go into 'data' key when we call this action
 	userLoginLoading: null,
 	userRegisterSuccess: ['user'],

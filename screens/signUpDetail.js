@@ -13,6 +13,8 @@ import LocationSettings from  'ZoxApp1/components/locationSettings'
 import LocationScreen from 'ZoxApp1/screens/location'
 import ManLocationScreen from 'ZoxApp1/screens/manualLocation'
 
+
+
 class SignUpDetail extends Component {
 
 componentDidMount() {
@@ -20,7 +22,8 @@ componentDidMount() {
 
 
 
- this.props.loginUser();
+ this.props.SignUpUser(
+ );
 
 
   }
@@ -83,7 +86,7 @@ return (
                             title ={"First Name"}
                             placeholder= {"EX- LAV "}
                             value={this.props.FirstName}
-                            onChange={(value) => this.props.changeLoginForm({FirstName: value, LastName: this.props.LastName,Password: this.props.Password, Email:this.props.Email, Phone: this.props.Phone, City:this.props.City })}
+                            onChange={(value) => this.props.changeLoginForm({FirstName: value, LastName: this.props.LastName,Password: this.props.Password, Email:this.props.Email, Phone: this.props.Phone, })}
 
                         />
 
@@ -101,7 +104,7 @@ return (
                                                     title ={"Last Name"}
                                                     placeholder= {"Ex- Agarwal"}
                                                       value={this.props.LastName}
-                                                                                onChange={(value) => this.props.changeLoginForm({LastName: value,FirstName: this.props.FirstName,Password: this.props.Password, Email:this.props.Email, Phone: this.props.Phone, City:this.props.City })}
+                                                                                onChange={(value) => this.props.changeLoginForm({LastName: value,FirstName: this.props.FirstName,Password: this.props.Password, Email:this.props.Email, Phone: this.props.Phone, })}
 
 
 
@@ -119,7 +122,7 @@ return (
                                                title ={"Password"}
                                                placeholder= {"Enter Password "}
                                                value={this.props.Password}
-                                               onChange={(value) => this.props.changeLoginForm({Password: value,FirstName: this.props.FirstName, LastName:this.props.LastName, Email:this.props.Email, Phone: this.props.Phone, City:this.props.City})}
+                                               onChange={(value) => this.props.changeLoginForm({Password: value,FirstName: this.props.FirstName, LastName:this.props.LastName, Email:this.props.Email, Phone: this.props.Phone,})}
 
                                            />
 
@@ -135,7 +138,7 @@ return (
                    placeholder= {"EX- Lav.ktm@gmail.com"}
                     value={this.props.Email}
 
-                  onChange={(value) => this.props.changeLoginForm({Email: value, FirstName: this.props.FirstName, LastName:this.props.LastName,Password: this.props.Password,Phone: this.props.Phone, City:this.props.City,})}
+                  onChange={(value) => this.props.changeLoginForm({Email: value, FirstName: this.props.FirstName, LastName:this.props.LastName,Password: this.props.Password,Phone: this.props.Phone, })}
 
 
                 />
@@ -150,7 +153,7 @@ return (
                                 placeholder= {"Enter your Phone Number"}
                                 value={this.props.Phone}
 
-                          onChange={(value) => this.props.changeLoginForm({Phone: value,  FirstName: this.props.FirstName, LastName:this.props.LastName,Password: this.props.Password, City:this.props.City,Email:this.props.Email,})}
+                          onChange={(value) => this.props.changeLoginForm({Phone: value,  FirstName: this.props.FirstName, LastName:this.props.LastName,Password: this.props.Password, Email:this.props.Email,})}
 
                             />
 
@@ -160,16 +163,54 @@ return (
 
                 <Card style={{ marginLeft: '5%', marginRight: '5%', marginTop: '7%',  }}>
 
-                                                     <SignUpCardItem
+                    <LocationSettings
+                          logo={"location-arrow"}
+                          title ={"Location Settings"}
 
-                                                         logo={"location-arrow"}
-                                                         title ={"City"}
-                                                       placeholder= {"Name of city"}
-                                                         value={this.props.City}
+                   / >
 
-                                                                                 onChange={(value) => this.props.changeLoginForm({City: value,FirstName: this.props.FirstName, LastName:this.props.LastName,Password: this.props.Password,Phone: this.props.Phone,Email:this.props.Email, })}
+                    <Text style={{ color: 'grey', fontSize: 15, marginLeft: '7%' }}>PIN CODE</Text>
+                                                                    <TextInput style={{  marginTop: '2%',  marginLeft:'5%', marginRight: '5%',  marginBottom :'5%', fontSize:20,color: '#05375a', borderWidth :0.5}}
+                            />
+                                <Text style={{ color: 'grey', fontSize: 15, marginLeft: '7%', }}>Address(House No. , Building , Street , Area)</Text>
+                                                                               <TextInput style={{  marginTop: '2%',  marginLeft:'5%', marginRight: '5%', fontSize:20,color: '#05375a', borderWidth :0.5}}
+                                       />
+                                <View>
 
-                                                     />
+
+                                </View>
+
+
+
+                              <TouchableOpacity
+
+                                                      style={
+                                                         {borderColor : '#fff',
+                                                         borderWidth : 1,
+                                                         marginTop:'10%',
+                                                           marginBottom:'10%',
+                                                        width :'90%',
+                                                          height: 45,
+
+                                                                   justifyContent: 'center',
+                                                                   alignItems: 'center',
+                                                                   borderRadius: 30,
+                                                                   marginRight:'5%',
+                                                                   marginLeft:'5%',
+                                                                   backgroundColor:'red'}
+
+                                                         }
+
+
+
+                                                      >
+
+                                                      <Text style={[Style.textSign,{ color :'#fff', fontSize:20, fontWeight:'bold'}
+                                                          ]}> ADD ADDRESS </Text>
+
+                                                      </TouchableOpacity>
+
+
 
                           </Card>
 
@@ -189,10 +230,12 @@ return (
 const mapStateToProps = (state) => ({
     token                    : state.user.token,
     agentid                  : state.user.id,
+     number: state.user.number,
+      password: state.user.password,
      Email                 :      state.signUp.Email,
     Password:    state.signUp.Password,
         Phone :     state.signUp.Phone,
-        City :         state.signUp.City,
+
         FirstName:    state.signUp.FirstName,
         LastName :    state.signUp.LastName,
 
@@ -201,6 +244,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch)  => ({
  loginUser: (data) => dispatch(UserActions.loginUser(data)),
+   SignUpUser: (data) => dispatch(UserRegisterActions.SignUpUser(data)),
   RegisterUser: (data) => dispatch(UserRegisterActions.RegisterUser(data)),
    changeLoginForm : (data) => dispatch(UserRegisterActions.changeLoginForm(data)),
 

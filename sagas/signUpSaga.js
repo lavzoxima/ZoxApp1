@@ -18,7 +18,7 @@ export function* RegisterUser(data) {
 			yield put(UserRegisterActions.userRegisterFailure())
 		}
 	} catch (error) {
-		yield put(UserRegisterActions.userRegisterFailure())
+		yield put(UserRegisterActions .userRegisterFailure())
 
 	}
 }

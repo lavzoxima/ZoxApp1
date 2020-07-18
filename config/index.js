@@ -4,5 +4,5 @@ ALL_PRODUCT_URL: 'https://zx--dms2.my.salesforce.com/services/data/v45.0/query/?
 
 
 ALL_PRODUCT_PRICE_URL:"https://zx--dms2.my.salesforce.com/services/data/v45.0/query/?q=select+id,name,Product_Group__c,Gender__c,Product_Code_del__c,Sleeve__c,Pattern__c,Neck_Type__c,Fabric_Types__c,(select+id,name,MRP__c,MSP__c,Customer_Price__c,Dealer_Price__c,Product_Group__c,Party__c+from+Products_Pricing__r),(select+id,name,Discount__c,Product__c,Product_Category__c,Product_Group__c,Product_Sub_Category__c+from+Scheme__r)+from+Product__c+where+ id in+(select+Product_c__c+from+Product_Pricing__c+where+Party__c='Customer') " ,
-SIGN_UP : 'https://zx--dms2.my.salesforce.com/services/apexrest/SignUP/',
+SIGN_UP : " https://zx--dms2.my.salesforce.com/services/apexrest/SignUP/" ,
 }

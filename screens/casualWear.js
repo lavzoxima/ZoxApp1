@@ -71,7 +71,7 @@ this.props.fetchProducts({
 
                      <Right style={{ flex: 1, alignItems: 'flex-start', height: 90, paddingHorizontal: 20 }}>
                                          <Text>{item.Name}</Text>
-                                         <Text style={{ color: 'grey', fontSize: 11 }}>{item.attributes.type}</Text>
+                                         <Text style={{ color: 'grey', fontSize: 11 }}></Text>
                                          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#c4402f' }}>{item.Products_Pricing__r.records.Customer_Price__c}</Text>
                                                                                 <View  style ={{flexDirection :'row',  }}>
 

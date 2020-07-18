@@ -2,6 +2,7 @@ import { put, call, take, select } from 'redux-saga/effects'
 import { UserTypes } from 'ZoxApp1/store/user/Actions'
 import UserActions from 'ZoxApp1/store/user/Actions'
 import { userService } from 'ZoxApp1/service/API/userService'
+import { RegisterTypes } from 'ZoxApp1/store/SignUp/Actions'
 import { Toast } from 'native-base'
 import * as NavigationService from 'ZoxApp1/service/util/NavigationService'
 
@@ -12,7 +13,23 @@ export function* loginUser(data) {
 		console.log(userData);
 		if (userData) {
 			yield put(UserActions.userLoginSuccess(userData));
+            NavigationService.navigate("FooterScreen");
 
+		} else {
+			yield put(UserActions.userLoginFailure())
+		}
+	} catch (error) {
+		yield put(UserActions.userLoginFailure())
+
+	}
+}
+
+export function* signUpUser(data) {
+	try {
+		const userData = yield call(userService.loginUser, data);
+		console.log(userData);
+		if (userData) {
+			yield put(UserActions.userLoginSuccess(userData));
 
 		} else {
 			yield put(UserActions.userLoginFailure())
@@ -40,6 +57,17 @@ export function* watchUserLoginRequest() {
         console.log('im in saga');
         console.log(data);
 		yield call(loginUser, data)
+	}
+
+}
+
+export function* watchUserSignUpRequest() {
+	while (true) {
+		const { data } = yield take(RegisterTypes.SIGN_UP_USER)
+
+        console.log('im in saga');
+        console.log(data);
+		yield call(signUpUser, data)
 	}
 
 }

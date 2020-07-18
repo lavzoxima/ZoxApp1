@@ -5,6 +5,7 @@ export const INITIAL_STATE = {
     City : '',
     FirstName: '',
     LastName : '',
+    userId : '',
 
 
     userLoginIsLoading: false,

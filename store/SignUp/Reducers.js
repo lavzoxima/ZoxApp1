@@ -15,9 +15,12 @@ export const userLoginLoading = (state) => ({
   userLoginIsLoading: true
 });
 
+
+
+
 export const  userRegisterSuccess = (state, { user }) => ({
   ...state,
-
+      userId : user.id,
       userLoginIsLoading: false,
       userLoginErrorMessage: null
 });

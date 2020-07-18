@@ -42,7 +42,7 @@ backgroundColor: "#F1EFEF",
 },
 straight: {
 fontSize:15,
-
+    marginLeft : '12%',
    marginBottom: '8%',
  fontWeight: "bold",
  color: "#7F7E7E",
