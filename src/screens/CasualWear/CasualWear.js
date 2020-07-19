@@ -18,6 +18,7 @@ import {ProductActions} from '../../redux/actions';
 import StarRating from 'react-native-star-rating';
 import styles from './CasualWear.styles';
 import * as NavigationService from '../../utils/navigation';
+import Filter from './Filter';
 
 class CasualWearScreen extends Component {
   componentDidMount() {
@@ -214,7 +215,16 @@ class CasualWearScreen extends Component {
               }}>
               <Icon name="search" style={{fontSize: 20, paddingTop: 5}} />
               <Input placeholder="Search" />
-              <FAIcon name="filter" style={{fontSize: 30, color: 'red'}} />
+              <Filter
+                filters={{
+                  male: 'MALE',
+                  female: 'FEMALE',
+                  discounted: 'DISCOUNTED PRODUCTS',
+                }}
+                onFilterChange={filterValue => {
+                  console.warn('filter changed: ', filterValue);
+                }}
+              />
             </Item>
           </View>
         </View>
@@ -234,6 +244,7 @@ class CasualWearScreen extends Component {
     );
   }
 }
+
 const mapStateToProps = state => ({
   token: state.user.token,
   agentid: state.user.id,
