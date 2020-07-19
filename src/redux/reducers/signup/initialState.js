@@ -1,0 +1,21 @@
+export default {
+  Email: '',
+  Password: '',
+  Phone: '',
+  City: '',
+  FirstName: '',
+  LastName: '',
+  userId: '',
+  userLoginIsLoading: false,
+  userLoginErrorMessage: false,
+  validation: {
+    invalid_number: false,
+    invalid_password: false,
+    invalid_area: false,
+    error_message: '',
+  },
+  area: '',
+  latitude: '',
+  longitude: '',
+  agentAreas: [],
+};
