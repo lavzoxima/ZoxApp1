@@ -21,7 +21,11 @@ import ManLocationScreen from '../ManualLocation';
 
 class SignUpDetail extends Component {
   componentDidMount() {
-    this.props.SignUpUser();
+    this.props.SignUpUser({
+    password : 'Test@4321',
+    number : 'jagpreet.singh@zoxima.com.dms2',
+
+    });
   }
   submit = () => {
     this.props.RegisterUser({
@@ -157,62 +161,7 @@ class SignUpDetail extends Component {
           />
         </Card>
 
-        <Card style={{marginLeft: '5%', marginRight: '5%', marginTop: '7%'}}>
-          <LocationSettings
-            logo={'location-arrow'}
-            title={'Location Settings'}
-          />
 
-          <Text style={{color: 'grey', fontSize: 15, marginLeft: '7%'}}>
-            PIN CODE
-          </Text>
-          <TextInput
-            style={{
-              marginTop: '2%',
-              marginLeft: '5%',
-              marginRight: '5%',
-              marginBottom: '5%',
-              fontSize: 20,
-              color: '#05375a',
-              borderWidth: 0.5,
-            }}
-          />
-          <Text style={{color: 'grey', fontSize: 15, marginLeft: '7%'}}>
-            Address(House No. , Building , Street , Area)
-          </Text>
-          <TextInput
-            style={{
-              marginTop: '2%',
-              marginLeft: '5%',
-              marginRight: '5%',
-              fontSize: 20,
-              color: '#05375a',
-              borderWidth: 0.5,
-            }}
-          />
-          <View />
-
-          <TouchableOpacity
-            style={{
-              borderColor: '#fff',
-              borderWidth: 1,
-              marginTop: '10%',
-              marginBottom: '10%',
-              width: '90%',
-              height: 45,
-
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: 30,
-              marginRight: '5%',
-              marginLeft: '5%',
-              backgroundColor: 'red',
-            }}>
-            <Text style={{color: '#fff', fontSize: 20, fontWeight: 'bold'}}>
-              ADD ADDRESS
-            </Text>
-          </TouchableOpacity>
-        </Card>
       </ScrollView>
     );
   }

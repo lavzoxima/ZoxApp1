@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, View} from 'react-native';
+import {Image, View, Alert} from 'react-native';
 import {
   Container,
   Header,
@@ -82,9 +82,13 @@ class CardImageExample extends Component {
             <CardItem>
               <Left>
                 <Text style={styles.percut}>
-                  <Text style={styles.percent}> (50% OFF) </Text>
+                  <Text style={styles.percent}> (% OFF) </Text>
                   <Text style={styles.cutter}>
-                    {'\u20B9'} {data.Products_Pricing__r.records.MRP__c}
+                    {'\u20B9'}   {data.Products_Pricing__r.records.map(obj1 => { return   obj1.MRP__c;
+                                                                                         })
+
+
+                                                                                         }
                   </Text>
                 </Text>
               </Left>
@@ -93,7 +97,7 @@ class CardImageExample extends Component {
               <Left>
                 <Button danger style={styles.button1}>
                   <Icon name="star" size={10} />
-                  <Text style={styles.btntxt}> 4.9 </Text>
+                  <Text style={styles.btntxt}> </Text>
                 </Button>
               </Left>
               <Right>
@@ -124,6 +128,8 @@ class CardImageExample extends Component {
                       })
                     }
                     backgroundColor="#3b5998"
+
+
                   />
                 </View>
               </Right>
@@ -138,7 +144,9 @@ class CardImageExample extends Component {
             </CardItem>
             <CardItem>
               <Text> </Text>
-              <Button style={styles.buttons1}>
+              <Button style={styles.buttons1}
+                onPress={()=> Alert.alert('XS')}
+              >
                 <Text style={styles.buttontext}> XS </Text>
               </Button>
               <Text> </Text>

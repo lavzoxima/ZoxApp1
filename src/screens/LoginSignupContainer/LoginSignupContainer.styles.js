@@ -10,6 +10,8 @@ export default StyleSheet.create({
   tabStyle: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#f8f8ff',
+
+
   },
 });

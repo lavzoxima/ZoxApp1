@@ -6,6 +6,7 @@ export default StyleSheet.create({
     borderRadius: 10,
 
     backgroundColor: '#f5f5f5',
+
   },
   signIn: {
     height: 55,
@@ -37,13 +38,13 @@ export default StyleSheet.create({
 
   title: {
     color: 'grey',
-    fontSize: 20,
+    fontSize: 15,
   },
 
   tistyle: {
     marginTop: '1%',
     paddingLeft: 5,
-    fontSize: 20,
+    fontSize: 15,
     color: '#05375a',
   },
 

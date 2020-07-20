@@ -17,8 +17,14 @@ const in200s = isWithin(200, 299);
 
 function loginUser(params) {
   console.log(params);
+  let url = Config.ACCESS_URL;
+   url = url.replace('userId', params.number);
+    url = url.replace('passwordId', params.password);
+    console.log(url);
+
+
   return axios
-    .post(Config.ACCESS_URL, params, {
+    .post(url, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -31,6 +37,7 @@ function loginUser(params) {
       return null;
     })
     .catch(error => {
+
       console.log(error);
       return null;
     });

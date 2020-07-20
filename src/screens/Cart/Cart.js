@@ -9,6 +9,8 @@ import {
   Button,
   Left,
   Right,
+  Spinner,
+  Body
 } from 'native-base';
 import {connect} from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -18,6 +20,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './Cart.styles';
 import {VisitsActions} from '../../redux/actions';
+import FooterScreen from '../Footer';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 class ListExample extends Component {
   componentDidMount() {
@@ -50,45 +54,44 @@ class ListExample extends Component {
 
   renderListItem(item, index) {
     return (
-      <Card transparent>
-        <CardItem>
-          <Left>
-            <Image
-              source={{uri: item.Data.url}}
-              style={{height: 100, borderRadius: 60, width: 90}}
-            />
-            <Text style={styles.straight}>{item.Data.Name}</Text>
-          </Left>
-        </CardItem>
-        <CardItem>
-          <Left>
-            <Text style={styles.size}> Size 7, Green </Text>
-          </Left>
-        </CardItem>
-        <CardItem>
-          <Left>
-            <Text style={styles.ruppee}>
-              {'\u20B9'} {item.total__c}
-            </Text>
-          </Left>
-        </CardItem>
-        <CardItem>
-          <Left>
+      <Card style={{marginLeft: '2.5%', marginRight: '2.5%',   backgroundColor:'#f5f5f5'}}>
+        <CardItem >
+         <View>
+         <Image
+           style={{height: 100, borderRadius: 60, width: 90}}
+          source={{uri:  item.Data.url}}
+              />
+                  </View>
+          <Right
+                     style={{
+                       flex: 1,
+                       alignItems: 'flex-start',
+                       height: 110,
+                       paddingHorizontal: 10,
+                     }}>
+          <Text style={styles.straight}>{item.Data.Name}</Text>
+          <Text style={styles.size}> Size 7, Green </Text>
+
+           <Text style={styles.ruppee}>
+                        {'\u20B9'} {item.total__c}
+                      </Text>
             <Text style={styles.buttonplusminus}>
-              <AntDesign
-                style={styles.plusminuscircle}
-                name="minuscircle"
-                size={30}
-              />
-              {item.Quantity__c}
-              <AntDesign
-                style={styles.plusminuscircle}
-                name="pluscircle"
-                size={30}
-              />
-            </Text>
-          </Left>
+                         <AntDesign
+                           style={styles.plusminuscircle}
+                           name="minuscircle"
+                           size={30}
+                         />
+                         {item.Quantity__c}
+                         <AntDesign
+                           style={styles.plusminuscircle}
+                           name="pluscircle"
+                           size={30}
+                         />
+                       </Text>
+
+        </Right>
         </CardItem>
+
       </Card>
     );
   }
@@ -102,28 +105,34 @@ class ListExample extends Component {
     });
 
     return (
-      <Container>
+
+            <>
+          <View style={{flex: 1,  color:'#f5f5f5'}}>
+
+      <Container style={{backgroundColor:'#f5f5f5',  }}>
         <Text style={styles.cart}> Cart </Text>
-        <Content padder>
-          <Card bordered style={styles.card1}>
-            <CardItem>
+        <Content >
+          <Card  style={{marginLeft: '2.5%', marginRight: '2.5%', marginTop: 5, }} >
+            <CardItem style={{ borderRadius: wp('10.5%'),}}>
+            <Body>
               <Text style={styles.cart}>
                 <MaterialCommunityIcons name="brightness-percent" size={20} />
+                   <Text style={styles.offertext}> Available Offers </Text>
               </Text>
-              <Text style={styles.offertext}> Available Offers </Text>
+
+
+               <Text style={styles.shoptext}>
+                              Shop above {'\u20B9'} 50,000 & get 50% Discount on all items
+                            </Text>
+              </Body>
             </CardItem>
-            <CardItem style={styles.cardmar1}>
-              <Text style={styles.shoptext}>
-                Shop above {'\u20B9'} 50,000 & get 50% Discount on all items
-              </Text>
-            </CardItem>
-          </Card>
+ </Card>
 
           <View
             style={{
-              marginTop: '5%',
+
               backgroundColor: '#f5f5f5',
-              marginBottom: '5%',
+
             }}>
             {cart.items && cart.items.length ? (
               <FlatList
@@ -132,15 +141,14 @@ class ListExample extends Component {
                 keyExtractor={item => item.Data.Id}
               />
             ) : (
-              <Text>No Items in the Cart ....</Text>
+              <View style={{justifyContent: 'center',
+                                    alignItems: 'center',}}><Text>No Products Added </Text></View>
             )}
           </View>
 
-          <Card>
-            <CardItem />
-          </Card>
 
-          <Card bordered style={styles.cardmar5}>
+
+          <Card  style={{marginLeft: '2.5%', marginRight: '2.5%', }}>
             <CardItem>
               <Text>
                 <FontAwesome5 name="tag" size={30} />
@@ -157,7 +165,7 @@ class ListExample extends Component {
               </Right>
             </CardItem>
           </Card>
-          <Card>
+          <Card style={{marginLeft: '2.5%', marginRight: '2.5%', }}>
             <CardItem>
               <Left>
                 <Text style={styles.Distributor}> Select Distributor </Text>
@@ -170,18 +178,9 @@ class ListExample extends Component {
                 />
               </Right>
             </CardItem>
-            <CardItem>
-              <Left>
-                <Text style={styles.Traders}> H.K Traders </Text>
-              </Left>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Text style={styles.Clothing}>A.V Clothing </Text>
-              </Left>
-            </CardItem>
+
           </Card>
-          <Card>
+          <Card  style={{marginLeft: '2.5%', marginRight: '2.5%', }}>
             <CardItem>
               <Left>
                 <Text style={styles.details}>
@@ -194,7 +193,7 @@ class ListExample extends Component {
                 <Text style={styles.bag}>Bag Total</Text>
               </Left>
               <Right>
-                <Text style={styles.rs}>{'\u20B9'} 31000</Text>
+                <Text style={styles.rs}>{'\u20B9'} </Text>
               </Right>
             </CardItem>
             <CardItem>
@@ -202,7 +201,7 @@ class ListExample extends Component {
                 <Text style={styles.dis}>Bag Discount</Text>
               </Left>
               <Right>
-                <Text style={styles.mirs}>-{'\u20B9'} 3000</Text>
+                <Text style={styles.mirs}>-{'\u20B9'}</Text>
               </Right>
             </CardItem>
             <CardItem>
@@ -218,7 +217,7 @@ class ListExample extends Component {
                 <Text style={styles.orto}>Order Total</Text>
               </Left>
               <Right>
-                <Text style={styles.rs1}>{'\u20B9'} 29000</Text>
+                <Text style={styles.rs1}>{'\u20B9'} </Text>
               </Right>
             </CardItem>
             <CardItem>
@@ -227,7 +226,7 @@ class ListExample extends Component {
               </Left>
               <Right>
                 <Text style={styles.top}>
-                  <Text style={styles.strike}>{'\u20B9'} 2000</Text>
+                  <Text style={styles.strike}>{'\u20B9'} </Text>
                   <Text style={styles.free}> Free </Text>
                 </Text>
               </Right>
@@ -243,7 +242,7 @@ class ListExample extends Component {
               </Right>
             </CardItem>
           </Card>
-          <Card>
+          <Card  style={{marginLeft: '2.5%', marginRight: '2.5%', }}>
             <CardItem>
               <Left>
                 <Image
@@ -266,38 +265,46 @@ class ListExample extends Component {
           </Card>
         </Content>
 
-        <Card transparent footer>
+        <Card transparent footer  style={{marginLeft: '2.5%', marginRight: '2.5%', }}>
           <CardItem>
             <Left>
+            <View Style= {{flexDirection : 'row'}}>
               <Text style={styles.ftext}>Total</Text>
-            </Left>
-          </CardItem>
 
-          <CardItem style={styles.fmar}>
-            <Left>
               <Text style={styles.frs}>{'\u20B9'} </Text>
+
+               <Text style={styles.fsh}> Free Domestic Shipping </Text>
+             </View>
             </Left>
-          </CardItem>
-          <CardItem style={styles.fmar1}>
-            <Left>
-              <Text style={styles.fsh}> Free Domestic Shipping </Text>
-            </Left>
+             <Right>
+                                    <Button rounded danger style={styles.fbtn}>
+                                               <Text>
+                                                 <Text style={styles.fbtxt}>Place Order </Text>
+                                                 <Text>
+                                                   <Ionicons
+                                                     style={styles.fti}
+                                                     name="ios-arrow-dropright-circle"
+                                                     size={20}
+                                                   />
+                                                 </Text>
+                                               </Text>
+                                             </Button>
+                                   </Right>
           </CardItem>
 
-          <Button rounded danger style={styles.fbtn}>
-            <Text>
-              <Text style={styles.fbtxt}>Place Order </Text>
-              <Text>
-                <Ionicons
-                  style={styles.fti}
-                  name="ios-arrow-dropright-circle"
-                  size={20}
-                />
-              </Text>
-            </Text>
-          </Button>
+
+
+
+
+
+
         </Card>
       </Container>
+      </View>
+      <View>
+        <FooterScreen/>
+       </View>
+      </>
     );
   }
 }

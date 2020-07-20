@@ -3,16 +3,19 @@ import {UserActions} from '../actions';
 import {UserTypes, RegisterTypes} from '../actionTypes';
 import {userService} from '../../utils/api/user.api';
 import * as NavigationService from '../../utils/navigation';
+import { HelperService } from '../../utils/HelperService';
 
 export function* loginUser(data) {
+    yield put(UserActions.userLoginLoading());
   try {
     const userData = yield call(userService.loginUser, data);
     console.log(userData);
     if (userData) {
       yield put(UserActions.userLoginSuccess(userData));
-      NavigationService.navigate('FooterScreen');
+      NavigationService.navigate('CasualWearScreen');
     } else {
       yield put(UserActions.userLoginFailure());
+      HelperService.showToast({ message: 'Cannot Login. Invalid credentials', duration: 2000, buttonText: 'Okay' });
     }
   } catch (error) {
     yield put(UserActions.userLoginFailure());

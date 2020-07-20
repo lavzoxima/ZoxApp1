@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, TextInput} from 'react-native';
-import {CardItem, Right} from 'native-base';
+import {View, Text, TouchableOpacity, Keyboard,TextInput, KeyboardAvoidingView} from 'react-native';
+import {CardItem, Right, Spinner} from 'native-base';
 import {connect} from 'react-redux';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {UserActions} from '../../redux/actions';
@@ -8,6 +8,7 @@ import styles from './Login.styles';
 
 class LogInScreen extends Component {
   submit = () => {
+  Keyboard.dismiss();
     this.props.loginUser({
       password: this.props.password,
       number: this.props.number,
@@ -16,7 +17,7 @@ class LogInScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container}>
         <CardItem style={styles.CaItem}>
           <FontAwesome name="user-o" color="#05375a" size={35} />
           <Right style={styles.rStyle}>
@@ -61,14 +62,15 @@ class LogInScreen extends Component {
             styles.signIn,
             {borderColor: '#fff', borderWidth: 1, marginTop: 15},
           ]}
+          disabled={this.props.userLoginIsLoading}
           onPress={() => this.submit()}>
-          <Text
-            style={[
-              styles.textSign,
-              {color: '#fff', fontSize: 20, fontWeight: 'bold'},
-            ]}>
-            LOG IN
-          </Text>
+
+            {this.props.userLoginIsLoading ? <Spinner color='#fff'/> :  <Text style={[
+                                                                                             styles.textSign,
+                                                                                             {color: '#fff', fontSize: 20, fontWeight: 'bold'},
+                                                                                           ]}>
+                                                                                           LOG IN
+                                                                                         </Text> }
         </TouchableOpacity>
 
         <View style={{marginTop: '12%', alignItems: 'center'}}>
@@ -84,7 +86,7 @@ class LogInScreen extends Component {
             Powered By ZoxPrime
           </Text>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }

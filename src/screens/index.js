@@ -8,6 +8,7 @@ import CasualWearScreen from './CasualWear';
 import CardImageExample from './ProductDetail';
 import ListExample from './Cart';
 import FooterScreen from './Footer';
+import ProfileScreen from './profile'
 
 const StackNavigator = createStackNavigator(
   {
@@ -17,7 +18,9 @@ const StackNavigator = createStackNavigator(
     CardImageExample,
     SignUpDetail,
     ListExample,
+     ProfileScreen,
     FooterScreen,
+
   },
   {
     initialRouteName: 'SplashScreen',

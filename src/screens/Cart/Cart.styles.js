@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   name: {
@@ -16,9 +17,11 @@ export default StyleSheet.create({
   },
   cart: {
     color: '#4B4A4A',
-    fontSize: 35,
+    fontSize: wp('10%'),
     fontWeight: 'bold',
-    marginLeft: 10,
+    marginLeft: '5%',
+
+    marginBottom: '2%'
   },
   percenticon: {
     color: '#626161',
@@ -26,7 +29,7 @@ export default StyleSheet.create({
   offertext: {
     color: '#7F7E7E',
     fontFamily: 'arial',
-    fontSize: 20,
+    fontSize: wp('4%'),
   },
   cardmar1: {
     marginTop: -17,
@@ -35,15 +38,18 @@ export default StyleSheet.create({
     color: '#ABA8A8',
   },
   card1: {
-    borderRadius: 30,
+    borderRadius: wp('10%'),
+    backgroundColor:'#a9a9a9',
+    color:'#a9a9a9',
+
   },
   concolor: {
     backgroundColor: '#F1EFEF',
   },
   straight: {
     fontSize: 15,
-    marginLeft: '12%',
-    marginBottom: '8%',
+
+
     fontWeight: 'bold',
     color: '#7F7E7E',
     fontFamily: 'arial',
@@ -52,22 +58,23 @@ export default StyleSheet.create({
     fontSize: 15,
     color: '#7F7E7E',
     fontFamily: 'arial',
-    marginTop: -100,
-    marginLeft: 135,
-  },
+    marginTop: '1%'
+
+    },
   ruppee: {
     color: '#E33636',
     fontFamily: 'arial',
-    marginTop: -90,
-    marginLeft: 135,
+
   },
   buttonplusminus: {
     fontFamily: 'arial',
-    marginTop: -90,
-    marginLeft: 135,
+     marginTop: '2%'
+
+
   },
   plusminuscircle: {
     color: '#B4B0B0',
+    marginTop: '2%'
   },
   cardmar2: {
     marginTop: -40,
@@ -204,12 +211,10 @@ export default StyleSheet.create({
   ftext: {
     color: '#7F7E7E',
   },
-  fmar: {
-    marginTop: -10,
-  },
+
   frs: {
     color: '#3E3E3E',
-    marginTop: -10,
+
     fontSize: 20,
   },
   fmar1: {
@@ -217,12 +222,11 @@ export default StyleSheet.create({
   },
   fsh: {
     color: '#7F7E7E',
-    marginTop: -10,
+
   },
   fbtn: {
-    width: 150,
-    marginLeft: 250,
-    marginTop: -60,
+    width: wp('35%'),
+
   },
   fbtxt: {
     color: '#ffffff',

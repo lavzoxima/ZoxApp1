@@ -22,6 +22,7 @@ export default class LoginSignupContainer extends Component {
             <Tabs tabBarUnderlineStyle={{backgroundColor: '#ff0000'}}>
               <Tab
                 heading="Log In"
+
                 textStyle={styles.tabStyle}
                 activeTextStyle={styles.tabStyle}>
                 <LogInScreen />
