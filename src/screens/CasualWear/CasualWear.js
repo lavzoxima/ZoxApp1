@@ -19,6 +19,7 @@ import StarRating from 'react-native-star-rating';
 import styles from './CasualWear.styles';
 import * as NavigationService from '../../utils/navigation';
 import Filter from './Filter';
+import {ServerImage} from '../../components';
 
 class CasualWearScreen extends Component {
   componentDidMount() {
@@ -37,9 +38,13 @@ class CasualWearScreen extends Component {
       <Card style={{marginLeft: '5%', marginRight: '5%', marginTop: 5}}>
         <CardItem button onPress={() => this.handlePress(item)}>
           <View>
-            <Image
-              style={{height: 95, width: 65}}
-              source={{uri: item.attributes.url}}
+            <ServerImage
+              height={95}
+              width={65}
+              entityId={item.Id}
+              onError={({nativeEvent: {error}}) => {
+                console.warn('image load error: ', item.Id, error);
+              }}
             />
           </View>
 
