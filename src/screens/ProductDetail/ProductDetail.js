@@ -20,6 +20,7 @@ import {VisitsActions} from '../../redux/actions';
 import styles from './ProductDetail.styles';
 import {ServerImage} from '../../components';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import StarRating from 'react-native-star-rating';
 
 
 class CardImageExample extends Component {
@@ -70,7 +71,7 @@ class CardImageExample extends Component {
 
         <Content>
           <Card>
-            <CardItem />
+
             <CardItem cardBody>
                <ServerImage
                             height={hp('50%')}
@@ -82,65 +83,86 @@ class CardImageExample extends Component {
                           />
             </CardItem>
             <CardItem>
-              <Left>
+
+                    <View>
                 <Text style={styles.heading1}> {data.Name} </Text>
-              </Left>
+                  <Text style={{marginTop :'4%', marginRight: '20%'}} >
+                                  <Text style={styles.percent}> (% OFF) </Text>
+                                  <Text style={styles.cutter}>
+                                    {'\u20B9'}     {data.Products_Pricing__r.records.map(obj1 => { return   obj1.MRP__c;
+                                                                                                         })
+
+
+                                                                                                         }
+                                  </Text>
+                                </Text>
+                                <View style={{marginTop: '2%'}}>
+                                  <StarRating
+                                                                          disabled={true}
+                                                                             maxStars={5}
+                                                                             starSize={wp('4%')}
+                                                                           fullStarColor="orange"
+                                                                   emptyStarColor="orange"/></View>
+
+
+</View>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               <Right style={{marginLeft:'35%'}}>
+                              <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                                <AntDesign.Button
+                                  name="minuscircleo"
+                                  size={30}
+                                  iconStyle ={{marginLeft: 5, }}
+                                  onPress={() =>
+                                    this.onChangeQuantity1({
+                                      item__c: id,
+                                      Data: data,
+                                      Quantity__c: this.isPresentInCartValue(id),
+                                      total__c: this.props.total,
+                                    })
+                                  }
+                                  backgroundColor="#f5f5f5"
+                                  color='red'
+                                  borderRadius={50}
+                                />
+                                <Text> {this.isPresentInCartValue(id)}</Text>
+                                <AntDesign.Button
+                                  name="pluscircleo"
+                                    iconStyle ={{marginLeft: 5, } }
+                                  size={30}
+                                 backgroundColor="#f5f5f5"
+                                  color='red'
+                                  borderRadius={50}
+                                  onPress={() =>
+                                    this.onChangeQuantity({
+                                      item__c: id,
+                                      Data: data,
+                                      Quantity__c: this.isPresentInCartValue(id),
+                                      total__c: this.props.total,
+                                    })
+                                  }
+
+
+
+                                />
+                              </View>
+                            </Right>
             </CardItem>
-            <CardItem>
-              <Left>
-                <Text style={styles.percut}>
-                  <Text style={styles.percent}> (% OFF) </Text>
-                  <Text style={styles.cutter}>
-                    {'\u20B9'}   {data.Products_Pricing__r.records.map(obj1 => { return   obj1.MRP__c;
-                                                                                         })
 
 
-                                                                                         }
-                  </Text>
-                </Text>
-              </Left>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Button danger style={styles.button1}>
-                  <Icon name="star" size={10} />
-                  <Text style={styles.btntxt}> </Text>
-                </Button>
-              </Left>
-              <Right>
-                <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                  <AntDesign.Button
-                    name="minuscircle"
-                    size={30}
-                    onPress={() =>
-                      this.onChangeQuantity1({
-                        item__c: id,
-                        Data: data,
-                        Quantity__c: this.isPresentInCartValue(id),
-                        total__c: this.props.total,
-                      })
-                    }
-                    backgroundColor="#3b5998"
-                  />
-                  <Text> {this.isPresentInCartValue(id)}</Text>
-                  <AntDesign.Button
-                    name="pluscircle"
-                    size={30}
-                    onPress={() =>
-                      this.onChangeQuantity({
-                        item__c: id,
-                        Data: data,
-                        Quantity__c: this.isPresentInCartValue(id),
-                        total__c: this.props.total,
-                      })
-                    }
-                    backgroundColor="#3b5998"
-
-
-                  />
-                </View>
-              </Right>
-            </CardItem>
           </Card>
 
           <Card>
@@ -150,7 +172,7 @@ class CardImageExample extends Component {
               </Left>
             </CardItem>
             <CardItem>
-              <Text> </Text>
+
               <Button style={styles.buttons1}
                 onPress={()=> Alert.alert('XS')}
               >

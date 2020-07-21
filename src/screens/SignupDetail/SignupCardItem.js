@@ -12,7 +12,7 @@ const SignUpCardItem = ({
 }) => (
   <CardItem>
     <View>
-      <FontAwesome name={logo} color="#05375a" size={30} />
+      <FontAwesome name={logo} color="#05375a" size={25} />
     </View>
 
     <Right
@@ -22,12 +22,12 @@ const SignUpCardItem = ({
         height: 50,
         paddingHorizontal: 20,
       }}>
-      <Text style={{color: 'grey', fontSize: 15}}>{title}</Text>
+      <Text style={{color: 'grey', fontSize: 15,  paddingLeft: 5,}}>{title}</Text>
       <TextInput
         style={{
           marginTop: '2%',
-          paddingLeft: 2.5,
-          fontSize: 20,
+          paddingLeft: 5,
+          fontSize: 17.5,
           color: '#05375a',
         }}
         placeholder={placeholder}

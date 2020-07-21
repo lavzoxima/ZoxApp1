@@ -19,7 +19,7 @@ class LogInScreen extends Component {
     return (
       <KeyboardAvoidingView style={styles.container}>
         <CardItem style={styles.CaItem}>
-          <FontAwesome name="user-o" color="#05375a" size={35} />
+          <FontAwesome name="user-o" color="#05375a" size={30} />
           <Right style={styles.rStyle}>
             <Text style={styles.title}>USERNAME / EMAIL</Text>
             <TextInput
@@ -32,13 +32,13 @@ class LogInScreen extends Component {
                 })
               }
               value={this.props.number}
-              autoFocus={true}
+
             />
           </Right>
         </CardItem>
 
         <CardItem style={styles.CaItem1}>
-          <FontAwesome name="lock" color="#05375a" size={35} />
+          <FontAwesome name="lock" color="#05375a" size={30} />
           <Right style={styles.rStyle}>
             <Text style={[styles.title, {paddingLeft: 10}]}>PASSWORD</Text>
             <TextInput

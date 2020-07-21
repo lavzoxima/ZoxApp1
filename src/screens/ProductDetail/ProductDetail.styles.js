@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   container: {
@@ -21,12 +22,13 @@ export default StyleSheet.create({
   },
   heading1: {
     color: '#666666',
-    fontSize: 20,
+    fontSize: wp('5%'),
   },
   button1: {
     borderRadius: 60,
     height: 30,
     width: 100,
+    marginTop:'5%'
   },
   card1: {
     marginTop: -10,
@@ -39,7 +41,7 @@ export default StyleSheet.create({
     fontSize: 20,
   },
   cutter: {
-    marginTop: -30,
+
     color: '#b3b3b3',
     fontSize: 15,
     textDecorationLine: 'line-through',
@@ -50,31 +52,35 @@ export default StyleSheet.create({
   },
   percent: {
     color: '#ff1a1a',
-    fontSize: 20,
+    fontSize: wp('4%'),
+    fontWeight: 'bold'
   },
   button1: {
-    borderRadius: 140,
-    marginLeft: 20,
-    width: 80,
-    marginTop: -20,
-    height: 30,
+    borderRadius: wp('4%'),
+    marginLeft: '10%',
+    marginTop: '7.5%',
+    width: wp('15%'),
+
+    height: hp('6%'),
     backgroundColor: '#E50505',
   },
   btntxt: {
-    marginLeft: -25,
+
   },
   buttons1: {
     backgroundColor: '#ffffff',
     borderWidth: 1,
     borderColor: '#ACA6A6',
     width: 65,
-    marginLeft: -10,
+    marginLeft: 10,
     height: 40,
   },
   buttontext: {
     color: '#666666',
     fontSize: 15,
     fontWeight: 'bold',
+    justifyContent: 'center',
+    marginLeft:'3%'
   },
   size: {
     color: '#4E4E4E',
@@ -101,9 +107,7 @@ export default StyleSheet.create({
     fontSize: 18,
     marginLeft: -15,
   },
-  percut: {
-    marginTop: -25,
-  },
+
   sleeve: {
     color: '#ACA6A6',
     fontSize: 18,
@@ -115,8 +119,5 @@ export default StyleSheet.create({
   plusminuscircle: {
     color: '#ACA6A6',
   },
-  plusminus: {
-    marginTop: -80,
-    marginRight: -30,
-  },
+
 });

@@ -55,7 +55,7 @@ class SignUpDetail extends Component {
               fontWeight: 'Bold',
             },
           ]}>
-          <Text style={{color: 'red', fontSize: 20, fontWeight: 'bold'}}>
+          <Text style={{color: 'red', fontSize: 25, fontWeight: 'bold'}}>
             Next
           </Text>
         </TouchableOpacity>
@@ -64,7 +64,7 @@ class SignUpDetail extends Component {
           style={{
             marginLeft: '5%',
             marginRight: '5%',
-            marginTop: '10%',
+            marginTop: '7.5%',
             borderRadius: 10,
           }}>
           <SignUpCardItem
@@ -84,7 +84,7 @@ class SignUpDetail extends Component {
           />
         </Card>
 
-        <Card style={{marginLeft: '5%', marginRight: '5%', marginTop: '7%'}}>
+        <Card style={{marginLeft: '5%', marginRight: '5%', marginTop: '5%'}}>
           <SignUpCardItem
             logo={'user-o'}
             title={'Last Name'}
@@ -106,7 +106,7 @@ class SignUpDetail extends Component {
           style={{
             marginLeft: '5%',
             marginRight: '5%',
-            marginTop: '7%',
+            marginTop: '5%',
             borderRadius: 10,
           }}>
           <SignUpCardItem
@@ -126,11 +126,11 @@ class SignUpDetail extends Component {
           />
         </Card>
 
-        <Card style={{marginLeft: '5%', marginRight: '5%', marginTop: '7%'}}>
+        <Card style={{marginLeft: '5%', marginRight: '5%', marginTop: '5%'}}>
           <SignUpCardItem
             logo={'envelope-open-o'}
             title={'EMAIL'}
-            placeholder={'EX- Lav.ktm@gmail.com'}
+            placeholder={'EX- Test@test.com'}
             value={this.props.Email}
             onChange={value =>
               this.props.changeLoginForm({
@@ -143,7 +143,7 @@ class SignUpDetail extends Component {
             }
           />
         </Card>
-        <Card style={{marginLeft: '5%', marginRight: '5%', marginTop: '7%'}}>
+        <Card style={{marginLeft: '5%', marginRight: '5%', marginTop: '5%'}}>
           <SignUpCardItem
             logo={'mobile-phone'}
             title={'PHONE NUMBER'}
