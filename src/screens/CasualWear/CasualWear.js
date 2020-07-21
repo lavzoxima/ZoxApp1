@@ -24,6 +24,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Filter from './Filter';
 import {ServerImage} from '../../components';
 
+
 class CasualWearScreen extends Component {
   componentDidMount() {
     this.props.fetchProducts({
@@ -38,12 +39,12 @@ class CasualWearScreen extends Component {
 
   renderListItem(item, index) {
     return (
-      <Card style={{marginLeft: '5%', marginRight: '5%', marginTop: 5}}>
+      <Card style={{marginLeft: '5%', marginRight: '5%', marginTop: hp('1%')}}>
         <CardItem button onPress={() => this.handlePress(item)}>
           <View>
             <ServerImage
-              height={95}
-              width={65}
+              height={hp('12.5%')}
+              width={wp('15%')}
               entityId={item.Id}
               onError={({nativeEvent: {error}}) => {
                 console.warn('image load error: ', item.Id, error);
@@ -55,13 +56,21 @@ class CasualWearScreen extends Component {
             style={{
               flex: 1,
               alignItems: 'flex-start',
-              height: 90,
+              height: hp('15%'),
               paddingHorizontal: 20,
             }}>
             <Text>{item.Name}</Text>
-            <Text style={{color: 'grey', fontSize: 11}} />
-            <Text style={{fontSize: 14, fontWeight: 'bold', color: '#c4402f'}}>
-              {item.Products_Pricing__r.records.Customer_Price__c}
+            <Text style={{color: 'grey', fontSize: wp('4%')}} />
+            <Text style={{fontSize: wp('4%'), fontWeight: 'bold', color: '#c4402f'}}>
+              {item.Products_Pricing__r.records.map( obj1 => {
+
+              return obj1.Customer_Price__c;
+              })}
+
+
+
+
+
             </Text>
             <View style={{flexDirection: 'row'}}>
               <Text
@@ -119,14 +128,14 @@ class CasualWearScreen extends Component {
             borderBottomColor: '#757575',
           }}>
           <Left style={{flexDirection: 'row'}}>
-            <FAIcon name="chevron-left" style={{fontSize: 30, color: 'red'}} />
+            <FAIcon name="chevron-left" style={{fontSize: wp('8%'), color: '#ff6347'}} />
           </Left>
           <Right>
             <Title
               style={{
-                fontSize: 35,
+                fontSize: wp('8%'),
                 color: '#a9a9a9',
-                marginBottom: 10,
+                marginBottom: hp('1%'),
                 marginRight: '30%',
               }}>
               Casual Wear
@@ -149,57 +158,61 @@ class CasualWearScreen extends Component {
           <TouchableOpacity>
             <View
               style={{
-                width: 75,
+                width: wp('19.5%'),
                 backgroundColor: '#fff',
-                height: 45,
-                borderRadius: 20,
-                padding: 15,
+                height: hp('6.5%'),
+                borderRadius: wp('4%'),
+                padding: 10,
                 alignItems: 'center',
                 marginLeft: '10%',
               }}>
-              <Text style={{fontSize: 12}}>Shirts</Text>
+              <Text style={{fontSize: wp('3.5%')}}>Shirts</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity>
             <View
               style={{
-                width: 75,
-                backgroundColor: '#fff',
-                height: 45,
-                borderRadius: 20,
-                padding: 15,
-                alignItems: 'center',
-                marginRight: '5%',
+              width: wp('19.5%'),
+                              backgroundColor: '#fff',
+                              height: hp('6.5%'),
+                              borderRadius: wp('4%'),
+                              padding: 10,
+                              alignItems: 'center',
+
+
+                marginRight: wp('5.5%'),
               }}>
-              <Text style={{fontSize: 12}}> T-Shirt</Text>
+              <Text style={{fontSize: wp('3.5%')}}> T-Shirt</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity>
             <View
               style={{
-                width: 75,
                 backgroundColor: '#fff',
-                height: 45,
-                borderRadius: 20,
-                padding: 15,
-                alignItems: 'center',
-                marginRight: '5%',
+                                             height: hp('6.5%'),
+                                             borderRadius: wp('4%'),
+                                             padding: 10,
+                                             alignItems: 'center',
+
+
+                               marginRight: wp('3.5%'),
               }}>
-              <Text style={{fontSize: 12}}>Denims</Text>
+              <Text style={{fontSize: wp('3.5%')}}>Denims</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity>
             <View
               style={{
-                width: 80,
-                backgroundColor: '#fff',
-                height: 45,
-                borderRadius: 20,
-                padding: 15,
-                alignItems: 'center',
-                marginRight: '5%',
+               backgroundColor: '#fff',
+                                                           height: hp('6.5%'),
+                                                           borderRadius: wp('4%'),
+                                                           padding: 10,
+                                                           alignItems: 'center',
+
+
+                                             marginRight: wp('3.5%'),
               }}>
-              <Text style={{fontSize: 12}}>Trousers</Text>
+              <Text style={{fontSize: wp('3.5%')}}>Trousers</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -209,8 +222,8 @@ class CasualWearScreen extends Component {
             position: 'absolute',
             left: 0,
             right: 0,
-            top: '20%',
-            height: '10%',
+            top: hp('16%'),
+            height: hp('10%'),
             backgroundColor: '#f5f5f5',
             flexDirection: 'row',
             alignItems: 'center',

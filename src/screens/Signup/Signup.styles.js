@@ -14,7 +14,7 @@ export default StyleSheet.create({
     borderRadius: 30,
     marginRight: '5%',
     marginLeft: '5%',
-    backgroundColor: '#dc143c',
+    backgroundColor: '#ff6347',
   },
   textInput: {
     fontSize: 30,

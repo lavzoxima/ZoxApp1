@@ -23,20 +23,20 @@ class FooterScreen extends Component {
 
 
               onPress={() => NavigationService.navigate('CasualWearScreen')}>
-              <Icon name="home"  style={{color:'#a9a9a9', fontWeight: 'bold'}} />
+              <Icon name="home"  style={{color:'#ff6347', fontWeight: 'bold'}} />
               <Text style={{color:'#a9a9a9', fontWeight: 'bold'}}>Home</Text>
             </Button>
             <Button
               vertical
               onPress={() => NavigationService.navigate('ListExample')}>
-              <Icon name="cart"  style={{color:'#a9a9a9'}}/>
+              <Icon name="cart"  style={{color:'#ff6347'}}/>
               <Text style={{color:'#a9a9a9', fontWeight: 'bold'}}>Cart</Text>
 
             </Button>
             <Button
                             vertical
                           onPress={() => NavigationService.navigate('ProfileScreen')}>
-                          <Icon name="person" style={{color:'#a9a9a9'}}/>
+                          <Icon name="person" style={{color:'#ff6347'}}/>
                           <Text style={{color:'#a9a9a9', fontWeight: 'bold'}}>Profile</Text>
                         </Button>
           </FooterTab>

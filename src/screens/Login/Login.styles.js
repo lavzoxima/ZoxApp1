@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   container: {
@@ -9,16 +10,16 @@ export default StyleSheet.create({
 
   },
   signIn: {
-    height: 55,
+    height: hp('7.5%'),
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 30,
+    borderRadius: wp('10%'),
     marginRight: '5%',
     marginLeft: '5%',
-    backgroundColor: '#dc143c',
+    backgroundColor: '#ff6347',
   },
   textInput: {
-    fontSize: 30,
+    fontSize: wp('9.5%'),
     paddingLeft: 10,
     color: '#fff',
   },
@@ -26,25 +27,25 @@ export default StyleSheet.create({
   CaItem: {
     marginLeft: '5%',
     marginRight: '5%',
-    marginTop: '10%',
+    marginTop: hp('3.5%'),
   },
 
   rStyle: {
     flex: 1,
     alignItems: 'flex-start',
-    height: 60,
+    height: hp('7.5%'),
     paddingHorizontal: 20,
   },
 
   title: {
     color: 'grey',
-    fontSize: 15,
+    fontSize: wp('4%'),
   },
 
   tistyle: {
     marginTop: '1%',
     paddingLeft: 5,
-    fontSize: 15,
+    fontSize: wp('4%'),
     color: '#05375a',
   },
 

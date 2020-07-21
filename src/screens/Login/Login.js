@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {UserActions} from '../../redux/actions';
 import styles from './Login.styles';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 class LogInScreen extends Component {
   submit = () => {
@@ -19,7 +20,7 @@ class LogInScreen extends Component {
     return (
       <KeyboardAvoidingView style={styles.container}>
         <CardItem style={styles.CaItem}>
-          <FontAwesome name="user-o" color="#05375a" size={30} />
+          <FontAwesome name="user-o" color="#a9a9a9" size={wp('7%')} />
           <Right style={styles.rStyle}>
             <Text style={styles.title}>USERNAME / EMAIL</Text>
             <TextInput
@@ -38,7 +39,7 @@ class LogInScreen extends Component {
         </CardItem>
 
         <CardItem style={styles.CaItem1}>
-          <FontAwesome name="lock" color="#05375a" size={30} />
+          <FontAwesome name="lock" color="#a9a9a9" size={wp('7%')} />
           <Right style={styles.rStyle}>
             <Text style={[styles.title, {paddingLeft: 10}]}>PASSWORD</Text>
             <TextInput
@@ -60,27 +61,27 @@ class LogInScreen extends Component {
         <TouchableOpacity
           style={[
             styles.signIn,
-            {borderColor: '#fff', borderWidth: 1, marginTop: 15},
+            {borderColor: '#fff', borderWidth: 1, marginTop: hp('1.75%')},
           ]}
           disabled={this.props.userLoginIsLoading}
           onPress={() => this.submit()}>
 
             {this.props.userLoginIsLoading ? <Spinner color='#fff'/> :  <Text style={[
                                                                                              styles.textSign,
-                                                                                             {color: '#fff', fontSize: 20, fontWeight: 'bold'},
+                                                                                             {color: '#fff', fontSize: wp('4%'), fontWeight: 'bold'},
                                                                                            ]}>
                                                                                            LOG IN
                                                                                          </Text> }
         </TouchableOpacity>
 
-        <View style={{marginTop: '12%', alignItems: 'center'}}>
+        <View style={{marginTop: hp('3%'), alignItems: 'center'}}>
           <Text>Don't have an account? Swipe right to create</Text>
           <Text style={{marginTop: '1%', color: '#dc143c'}}>a new account</Text>
           <Text
             style={{
-              marginTop: '3%',
+              marginTop: hp('0.25%'),
               color: '#05375a',
-              fontSize: 15,
+              fontSize: wp('4%'),
               fontWeight: 'bold',
             }}>
             Powered By ZoxPrime

@@ -46,7 +46,7 @@ class SignUpScreen extends Component {
             SEND OTP
           </Text>
         </TouchableOpacity>
-        <View style={{marginTop: '12%', alignItems: 'center'}}>
+        <View style={{marginTop: '6%', alignItems: 'center'}}>
           <Text> By creating an account, you agree to our </Text>
           <Text style={{marginTop: '1%', color: '#dc143c'}}>
             Terms of Service and Privacy Policy
