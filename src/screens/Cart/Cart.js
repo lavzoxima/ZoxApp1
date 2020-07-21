@@ -23,35 +23,14 @@ import {VisitsActions} from '../../redux/actions';
 import FooterScreen from '../Footer';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {ServerImage} from '../../components';
+import { ProductCounter} from '../../components';
 
 class ListExample extends Component {
   componentDidMount() {
     const {cart} = this.props;
   }
 
-  onChangeQuantity(params) {
-    const {addItemToCart, removeItemFromCart} = this.props;
 
-    addItemToCart(params);
-  }
-
-  onChangeQuantity1(params) {
-    const {addItemToCart, removeItemFromCart} = this.props;
-
-    removeItemFromCart(params);
-  }
-
-  isPresentInCartValue(itemId) {
-    const {cart} = this.props;
-
-    let itemPresentValue = 0;
-    cart.items.map(obj => {
-      if (obj.item__c == itemId) {
-        itemPresentValue = obj.Quantity__c;
-      }
-    });
-    return itemPresentValue;
-  }
 
   renderListItem(item, index) {
     return (
@@ -75,24 +54,17 @@ class ListExample extends Component {
                        paddingHorizontal: 30,
                      }}>
           <Text style={styles.straight}>{item.Data.Name}</Text>
-          <Text style={styles.size}> Size 7, Green </Text>
+          <Text style={styles.size}>  </Text>
 
            <Text style={styles.ruppee}>
                         {'\u20B9'} {item.total__c}
                       </Text>
-            <Text style={styles.buttonplusminus}>
-                         <AntDesign
-                           style={styles.plusminuscircle}
-                           name="minuscircle"
-                           size={30}
-                         />
-                         {item.Quantity__c}
-                         <AntDesign
-                           style={styles.plusminuscircle}
-                           name="pluscircle"
-                           size={30}
-                         />
-                       </Text>
+           <ProductCounter
+            id={item.Data.Id}
+            data={item.Data}
+            Size={20}
+
+           />
 
         </Right>
         </CardItem>
