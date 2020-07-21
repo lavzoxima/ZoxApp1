@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {TouchableOpacity, View, Text, Image, FlatList, ScrollView} from 'react-native';
+import {TouchableOpacity, View, Text, Image, FlatList} from 'react-native';
 import {connect} from 'react-redux';
 import {
   Container,
@@ -12,14 +12,12 @@ import {
   Card,
   CardItem,
   Title,
-  Spinner,
 } from 'native-base';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import {ProductActions} from '../../redux/actions';
 import StarRating from 'react-native-star-rating';
 import styles from './CasualWear.styles';
 import * as NavigationService from '../../utils/navigation';
-import FooterScreen from '../Footer';
 
 class CasualWearScreen extends Component {
   componentDidMount() {
@@ -34,8 +32,6 @@ class CasualWearScreen extends Component {
   }
 
   renderListItem(item, index) {
-
-
     return (
       <Card style={{marginLeft: '5%', marginRight: '5%', marginTop: 5}}>
         <CardItem button onPress={() => this.handlePress(item)}>
@@ -56,16 +52,7 @@ class CasualWearScreen extends Component {
             <Text>{item.Name}</Text>
             <Text style={{color: 'grey', fontSize: 11}} />
             <Text style={{fontSize: 14, fontWeight: 'bold', color: '#c4402f'}}>
-              {item.Products_Pricing__r.records.map(obj1 => {
-
-
-                                                         return   obj1.MRP__c;
-                                                          })
-
-
-                                                          }
-
-
+              {item.Products_Pricing__r.records.Customer_Price__c}
             </Text>
             <View style={{flexDirection: 'row'}}>
               <Text
@@ -106,10 +93,7 @@ class CasualWearScreen extends Component {
     const {productList} = this.props;
 
     return (
-            <>
-            <View style={{flex: 1}}>
-
-      <Container >
+      <Container>
         <Header
           style={{
             backgroundColor: '#fff',
@@ -235,7 +219,7 @@ class CasualWearScreen extends Component {
           </View>
         </View>
 
-        <View style={{marginTop: '-18%', backgroundColor: '#f5f5f5', }}>
+        <View style={{marginTop: '-18%', backgroundColor: '#f5f5f5'}}>
           {productList && productList.length ? (
             <FlatList
               data={productList}
@@ -243,28 +227,10 @@ class CasualWearScreen extends Component {
               keyExtractor={item => item.Id}
             />
           ) : (
-            <View style={{justifyContent: 'center',
-                              alignItems: 'center',}}><Spinner color='#a9a9a9'/></View>
+            <Text>Loading Product list</Text>
           )}
         </View>
-
       </Container>
-
-    </View>
-     <View>
-    <FooterScreen/>
-     </View>
-
-      </>
-
-
-
-
-
-
-
-
-
     );
   }
 }
