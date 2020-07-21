@@ -254,8 +254,7 @@ class CasualWearScreen extends Component {
               keyExtractor={item => item.Id}
             />
           ) : (
-          <View style={{justifyContent: 'center',
-                            alignItems: 'center',}}>   <Spinner color='#a9a9a9'/>      </View>
+           <Spinner color='#a9a9a9'/>
           )}
         </View>
       </Container>
