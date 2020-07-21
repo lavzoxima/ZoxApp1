@@ -18,6 +18,9 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {connect} from 'react-redux';
 import {VisitsActions} from '../../redux/actions';
 import styles from './ProductDetail.styles';
+import {ServerImage} from '../../components';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 
 class CardImageExample extends Component {
   isPresentInCartValue(itemId) {
@@ -69,10 +72,14 @@ class CardImageExample extends Component {
           <Card>
             <CardItem />
             <CardItem cardBody>
-              <Image
-                source={{uri: data.attributes.url}}
-                style={{height: 350, width: 250, flex: 1}}
-              />
+               <ServerImage
+                            height={hp('50%')}
+                            width={wp('100%')}
+                            entityId={id}
+                            onError={({nativeEvent: {error}}) => {
+                              console.warn('image load error: ', id, error);
+                            }}
+                          />
             </CardItem>
             <CardItem>
               <Left>

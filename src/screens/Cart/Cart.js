@@ -22,6 +22,7 @@ import styles from './Cart.styles';
 import {VisitsActions} from '../../redux/actions';
 import FooterScreen from '../Footer';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {ServerImage} from '../../components';
 
 class ListExample extends Component {
   componentDidMount() {
@@ -57,17 +58,21 @@ class ListExample extends Component {
       <Card style={{marginLeft: '2.5%', marginRight: '2.5%',   backgroundColor:'#f5f5f5'}}>
         <CardItem >
          <View>
-         <Image
-           style={{height: 100, borderRadius: 60, width: 90}}
-          source={{uri:  item.Data.url}}
-              />
+             <ServerImage
+                          height={105}
+                          width={75}
+                          entityId={item.Data.Id}
+                          onError={({nativeEvent: {error}}) => {
+                            console.warn('image load error: ', item.Data.Id, error);
+                          }}
+                        />
                   </View>
           <Right
                      style={{
                        flex: 1,
                        alignItems: 'flex-start',
                        height: 110,
-                       paddingHorizontal: 10,
+                       paddingHorizontal: 30,
                      }}>
           <Text style={styles.straight}>{item.Data.Name}</Text>
           <Text style={styles.size}> Size 7, Green </Text>
@@ -265,7 +270,7 @@ class ListExample extends Component {
           </Card>
         </Content>
 
-        <Card transparent footer  style={{marginLeft: '2.5%', marginRight: '2.5%', }}>
+        <Card transparent footer  style={{marginLeft: '2.5%', marginRight: '2.5%',backgroundColor: 'transparent' }}>
           <CardItem>
             <Left>
             <View Style= {{flexDirection : 'row'}}>
