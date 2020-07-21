@@ -12,12 +12,17 @@ import {
   Card,
   CardItem,
   Title,
+  Spinner
 } from 'native-base';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import {ProductActions} from '../../redux/actions';
 import StarRating from 'react-native-star-rating';
 import styles from './CasualWear.styles';
 import * as NavigationService from '../../utils/navigation';
+import FooterScreen from '../Footer';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Filter from './Filter';
+import {ServerImage} from '../../components';
 
 class CasualWearScreen extends Component {
   componentDidMount() {
@@ -36,9 +41,13 @@ class CasualWearScreen extends Component {
       <Card style={{marginLeft: '5%', marginRight: '5%', marginTop: 5}}>
         <CardItem button onPress={() => this.handlePress(item)}>
           <View>
-            <Image
-              style={{height: 95, width: 65}}
-              source={{uri: item.attributes.url}}
+            <ServerImage
+              height={95}
+              width={65}
+              entityId={item.Id}
+              onError={({nativeEvent: {error}}) => {
+                console.warn('image load error: ', item.Id, error);
+              }}
             />
           </View>
 
@@ -70,7 +79,12 @@ class CasualWearScreen extends Component {
                     textDecorationLine: 'line-through',
                     textDecorationStyle: 'solid',
                   }}>
-                  {item.Products_Pricing__r.records.MRP__c}
+                  {item.Products_Pricing__r.records.map(
+                                                            obj1 => {
+
+                                                              return obj1.MRP__c;
+                                                            },
+                                                          )}
                 </Text>
                 ({this.props.savings}% OFF)
               </Text>
@@ -93,6 +107,10 @@ class CasualWearScreen extends Component {
     const {productList} = this.props;
 
     return (
+
+      <>
+     <View style={{flex: 1, }}>
+
       <Container>
         <Header
           style={{
@@ -214,7 +232,16 @@ class CasualWearScreen extends Component {
               }}>
               <Icon name="search" style={{fontSize: 20, paddingTop: 5}} />
               <Input placeholder="Search" />
-              <FAIcon name="filter" style={{fontSize: 30, color: 'red'}} />
+              <Filter
+                filters={{
+                  male: 'MALE',
+                  female: 'FEMALE',
+                  discounted: 'DISCOUNTED PRODUCTS',
+                }}
+                onFilterChange={filterValue => {
+                  console.warn('filter changed: ', filterValue);
+                }}
+              />
             </Item>
           </View>
         </View>
@@ -227,10 +254,20 @@ class CasualWearScreen extends Component {
               keyExtractor={item => item.Id}
             />
           ) : (
-            <Text>Loading Product list</Text>
+          <View style={{justifyContent: 'center',
+                            alignItems: 'center',}}>   <Spinner color='#a9a9a9'/>      </View>
           )}
         </View>
       </Container>
+
+
+        </View>
+
+          <View>
+           <FooterScreen/>
+          </View>
+        </>
+
     );
   }
 }
