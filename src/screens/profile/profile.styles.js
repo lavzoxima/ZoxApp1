@@ -1,13 +1,15 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
 
 name: {
 color: "#808080",
-fontSize:35,
+fontSize:wp('4.5%'),
   fontWeight: "bold",
-  marginTop: -160,
-  marginRight: -90
+  marginLeft: wp('7.5%'),
+  marginTop: hp('2.5%')
+
 },
 email: {
  marginTop: -125,
@@ -29,7 +31,7 @@ color: "#808080",
 fontSize:18,
 },
 icons: {
-marginLeft: -10,
+
 },
 icon2: {
 marginLeft: -12,
@@ -42,15 +44,15 @@ marginLeft: -10,
 
 },
 text1: {
-marginRight: 170,
-fontSize:18,
+
+fontSize:wp('4.5%'),
 },
 arrow1: {
-marginRight: 25,
-marginTop: -10,
-borderRadius:140,
+
+
+
 backgroundColor: '#d3d3d3',
-height: 30
+height: hp('3.5%')
 },
 text2: {
 marginRight: 150,
@@ -150,8 +152,11 @@ borderRadius:140,
         marginLeft: -30,
         },
 cardmar: {
-marginTop: 10,
-borderRadius:20,
+marginTop: hp('2%'),
+
+marginLeft: wp('1%'),
+marginRight: wp('1%')
+
 },
 button1: {
 alignSelf: 'center',

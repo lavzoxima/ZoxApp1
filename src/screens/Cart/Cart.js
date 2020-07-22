@@ -142,7 +142,7 @@ class ListExample extends Component {
               </Right>
             </CardItem>
           </Card>
-          <Card style={{marginLeft: '2.5%', marginRight: '2.5%', }}>
+          <Card style={{marginLeft: '2.5%', marginRight: '2.5%', marginTop: '5%' }}>
             <CardItem>
               <Left>
                 <Text style={styles.Distributor}> Select Distributor </Text>
@@ -157,7 +157,7 @@ class ListExample extends Component {
             </CardItem>
 
           </Card>
-          <Card  style={{marginLeft: '2.5%', marginRight: '2.5%', }}>
+          <Card  style={{marginLeft: '2.5%', marginRight: '2.5%', marginTop: '5%'}}>
             <CardItem>
               <Left>
                 <View>
