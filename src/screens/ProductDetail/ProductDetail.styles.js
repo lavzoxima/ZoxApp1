@@ -22,7 +22,8 @@ export default StyleSheet.create({
   },
   heading1: {
     color: '#666666',
-    fontSize: wp('5%'),
+    fontSize: wp('4%'),
+    marginRight : wp('0%')
   },
   button1: {
     borderRadius: 60,
@@ -43,7 +44,7 @@ export default StyleSheet.create({
   cutter: {
 
     color: '#b3b3b3',
-    fontSize: 15,
+    fontSize: wp('4%'),
     textDecorationLine: 'line-through',
   },
   plmibi: {
@@ -56,15 +57,16 @@ export default StyleSheet.create({
     fontWeight: 'bold'
   },
   button1: {
-    borderRadius: wp('4%'),
-    marginLeft: '10%',
-    marginTop: '7.5%',
-    width: wp('15%'),
+    borderRadius: wp('5%'),
+    marginLeft: wp('3%'),
+    marginTop: wp('2%'),
+    width: wp('15.5%'),
 
-    height: hp('6%'),
+    height: hp('4%'),
     backgroundColor: '#E50505',
   },
   btntxt: {
+  fontSize: wp('27')
 
   },
   buttons1: {

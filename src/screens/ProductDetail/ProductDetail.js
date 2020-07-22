@@ -25,29 +25,7 @@ import StarRating from 'react-native-star-rating';
 
 
 class CardImageExample extends Component {
-  isPresentInCartValue(itemId) {
-    const {cart} = this.props;
 
-    let itemPresentValue = 0;
-    cart.items.map(obj => {
-      if (obj.item__c == itemId) {
-        itemPresentValue = obj.Quantity__c;
-      }
-    });
-    return itemPresentValue;
-  }
-
-  onChangeQuantity(params) {
-    const {addItemToCart, removeItemFromCart} = this.props;
-
-    addItemToCart(params);
-  }
-
-  onChangeQuantity1(params) {
-    const {addItemToCart, removeItemFromCart} = this.props;
-
-    removeItemFromCart(params);
-  }
 
   componentDidMount() {
     const {id, data} = this.props.navigation.state.params;
@@ -82,47 +60,50 @@ class CardImageExample extends Component {
                               console.warn('image load error: ', id, error);
                             }}
                           />
+
+
             </CardItem>
-            <CardItem>
+        </Card>
+    <Card>
+    <CardItem>
+    <Text style={styles.heading1}> {data.Name} </Text>
+    </CardItem>
+
+     <CardItem>
+   <View>
 
 
-<Left>
-                    <View>
-
-                    <Text style={styles.heading1}> {data.Name} </Text>
-
-
-                  <Text style={{marginTop :'5%', marginRight: '20%'}} >
-                                  <Text style={styles.percent}> (% OFF) </Text>
-                                  <Text style={styles.cutter}>
-                                    {'\u20B9'}     {data.Products_Pricing__r.records.map(obj1 => { return   obj1.MRP__c;
+    <Text style={{marginTop :wp('-8%'), marginRight : wp('25%') }} >
+    <Text style={styles.percent}> (% OFF) </Text>
+     <Text style={styles.cutter}>
+         {'\u20B9'}     {data.Products_Pricing__r.records.map(obj1 => { return   obj1.MRP__c;
                                                                                                          })
 
 
                                                                                                          }
                                   </Text>
                                 </Text>
-                                <View style={{marginTop: '2%'}}>
-                                  <StarRating
-                                                                          disabled={true}
-                                                                             maxStars={5}
-                                                                             starSize={wp('4%')}
-                                                                           fullStarColor="orange"
-                                                                   emptyStarColor="orange"/></View>
+
+                                <Button style={styles.button1}>
+                                               <Icon name='star' size={wp('4%')}/>
+                                               <Text style={styles.btntxt}> 4.9 </Text>
+                                               </Button>
+                                </View>
 
 
-</View>
-</Left>
 
 
-<Right  >
+
+
+
+
                             <ProductCounter
                                         id={id}
                                         data={data}
-                                        Size={30}
+                                        Size={25}
 
                                        />
-                            </Right>
+
             </CardItem>
 
 

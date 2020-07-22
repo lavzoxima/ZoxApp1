@@ -115,7 +115,7 @@ export default StyleSheet.create({
     marginTop: -35,
   },
   coupon: {
-    fontSize: 20,
+    fontSize: wp('4.5%'),
     color: '#7F7E7E',
   },
   arrow: {
@@ -123,7 +123,7 @@ export default StyleSheet.create({
   },
   Distributor: {
     color: '#4A4949',
-    fontSize: 20,
+    fontSize: wp('4.5%'),
     fontFamily: 'arial',
   },
   arrow1: {
@@ -145,39 +145,46 @@ export default StyleSheet.create({
   },
   bag: {
     color: '#929090',
-    marginTop: -30,
+    marginTop: wp('0.5%'),
+    marginRight: wp('25%')
   },
   rs: {
     color: '#929090',
-    marginTop: -20,
+    marginTop: wp('8.0') ,
   },
   dis: {
     color: '#929090',
-    marginTop: -45,
+    marginTop:wp('0.5%') ,
+     marginRight: wp('19%')
   },
   mirs: {
     color: '#097A27',
-    marginTop: -25,
+    marginTop:wp('2'),
   },
   coudis: {
     color: '#929090',
-    marginTop: -55,
+    marginTop: wp('0.5%'),
+     marginRight: wp('12%')
   },
   apcou: {
     color: '#E33636',
-    marginTop: -30,
+    marginTop:wp('1'),
+
   },
   orto: {
     color: '#929090',
-    marginTop: -55,
+    marginTop: wp('1%'),
+     marginRight: wp('22%')
   },
   rs1: {
     color: '#929090',
-    marginTop: -30,
+    marginTop: wp('1%'),
   },
   dech: {
     color: '#929090',
-    marginTop: -55,
+     marginTop: wp('0.5%'),
+      marginRight: wp('12%')
+
   },
   strike: {
     textDecorationLine: 'line-through',
@@ -187,17 +194,18 @@ export default StyleSheet.create({
     color: '#097A27',
   },
   top: {
-    marginTop: -35,
+    marginTop: wp('0%'),
   },
   tot: {
     color: '#5D5F5D',
-    marginTop: -55,
+    marginTop: wp('0.5%'),
+     marginRight: wp('30%'),
     fontSize: 20,
   },
   tors: {
     fontSize: 20,
     color: '#3E3E3E',
-    marginTop: -40,
+    marginTop: wp('1%'),
   },
   loyal: {
     marginLeft: 60,
@@ -226,6 +234,7 @@ export default StyleSheet.create({
   },
   fbtn: {
     width: wp('35%'),
+    backgroundColor: '#ff6347',
 
   },
   fbtxt: {

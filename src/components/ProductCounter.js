@@ -73,7 +73,7 @@ class ProductCounter extends Component {
                                           })
                                         }
                                         backgroundColor="#fff"
-                                        color='red'
+                                        color='#666666'
                                         borderRadius={50}
                                       />
                                       <Text style={{marginTop:hp('1%'), fontSize: wp('4%'), fontWeight:'bold'}}> {this.isPresentInCartValue(id)}</Text>
@@ -82,7 +82,7 @@ class ProductCounter extends Component {
                                           iconStyle ={{marginLeft: 3, } }
                                         size={Size}
                                        backgroundColor="#fff"
-                                        color='red'
+                                        color='#666666'
                                         borderRadius={50}
                                         onPress={() =>
                                           this.onChangeQuantity({

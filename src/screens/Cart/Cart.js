@@ -128,7 +128,7 @@ class ListExample extends Component {
           <Card  style={{marginLeft: '2.5%', marginRight: '2.5%', }}>
             <CardItem>
               <Text>
-                <FontAwesome5 name="tag" size={30} />
+                <FontAwesome5 name="tag" size={wp('5%')} />
               </Text>
               <Left>
                 <Text style={styles.coupon}> Apply Coupon </Text>
@@ -137,7 +137,7 @@ class ListExample extends Component {
                 <MaterialIcons
                   style={styles.arrow}
                   name="keyboard-arrow-right"
-                  size={30}
+                  size={wp('6%')}
                 />
               </Right>
             </CardItem>
@@ -151,7 +151,7 @@ class ListExample extends Component {
                 <MaterialIcons
                   style={styles.arrow1}
                   name="keyboard-arrow-up"
-                  size={30}
+                  size={wp('6%')}
                 />
               </Right>
             </CardItem>
@@ -160,64 +160,37 @@ class ListExample extends Component {
           <Card  style={{marginLeft: '2.5%', marginRight: '2.5%', }}>
             <CardItem>
               <Left>
+                <View>
                 <Text style={styles.details}>
                   PRICE DETAILS ({this.props.cart.items.length} Items)
                 </Text>
+                 <Text style={styles.bag}>Bag Total</Text>
+                  <Text style={styles.dis}>Bag Discount</Text>
+                    <Text style={styles.coudis}>Coupon Discount</Text>
+                    <Text style={styles.orto}>Order Total</Text>
+                     <Text style={styles.dech}>Delivery Charges</Text>
+                      <Text style={styles.tot}>Total</Text>
+                  </View>
               </Left>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Text style={styles.bag}>Bag Total</Text>
-              </Left>
-              <Right>
-                <Text style={styles.rs}>{'\u20B9'} </Text>
-              </Right>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Text style={styles.dis}>Bag Discount</Text>
-              </Left>
-              <Right>
-                <Text style={styles.mirs}>-{'\u20B9'}</Text>
-              </Right>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Text style={styles.coudis}>Coupon Discount</Text>
-              </Left>
-              <Right>
-                <Text style={styles.apcou}>Apply Coupon</Text>
-              </Right>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Text style={styles.orto}>Order Total</Text>
-              </Left>
-              <Right>
-                <Text style={styles.rs1}>{'\u20B9'} </Text>
-              </Right>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Text style={styles.dech}>Delivery Charges</Text>
-              </Left>
-              <Right>
-                <Text style={styles.top}>
-                  <Text style={styles.strike}>{'\u20B9'} </Text>
-                  <Text style={styles.free}> Free </Text>
-                </Text>
-              </Right>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Text style={styles.tot}>Total</Text>
-              </Left>
-              <Right>
-                <Text style={styles.tors}>
-                  {'\u20B9'} {totalPrice}
-                </Text>
-              </Right>
-            </CardItem>
+                       <View>
+             <Right>
+                            <Text style={styles.rs}>{'\u20B9'} </Text>
+                            <Text style={styles.mirs}>-{'\u20B9'}</Text>
+                             <Text style={styles.apcou}>Apply Coupon</Text>
+                             <Text style={styles.rs1}>{'\u20B9'} </Text>
+                             <Text style={styles.top}>
+                                               <Text style={styles.strike}>{'\u20B9'} </Text>
+                                               <Text style={styles.free}> Free </Text>
+                                             </Text>
+                             <Text style={styles.tors}>
+                                              {'\u20B9'} {totalPrice}
+                                            </Text>
+
+                          </Right>
+                          </View>
+
+                 </CardItem>
+
           </Card>
           <Card  style={{marginLeft: '2.5%', marginRight: '2.5%', }}>
             <CardItem>
@@ -243,7 +216,7 @@ class ListExample extends Component {
         </Content>
 
         <Card transparent footer  style={{marginLeft: '2.5%', marginRight: '2.5%',backgroundColor: 'transparent' }}>
-          <CardItem>
+          <CardItem style={{backgroundColor: 'transparent' , height: hp('10%')}} >
             <Left>
             <View Style= {{flexDirection : 'row'}}>
               <Text style={styles.ftext}>Total</Text>
@@ -254,7 +227,7 @@ class ListExample extends Component {
              </View>
             </Left>
              <Right>
-                                    <Button rounded danger style={styles.fbtn}>
+                                    <Button rounded  style={styles.fbtn}>
                                                <Text>
                                                  <Text style={styles.fbtxt}>Place Order </Text>
                                                  <Text>
