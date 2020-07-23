@@ -13,6 +13,17 @@ const {Types, Creators} = createActions({
   placeOrderLoadingStop: null,
   placeOrderSuccess: ['payload'],
   placeOrderFailure: ['payload'],
+
+   getAllDistributor: null,
+    getAllDistributorSuccess: ['payload'],
+    getAllDistributorFailure: null,
+    getAllDistributorLoading: null,
+    getAllDistributorLoadingStop: null,
+
+       updateDistributorSearchFilters: ['payload']
+
+
+
 });
 
 export const VisitsTypes = Types;

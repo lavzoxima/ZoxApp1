@@ -13,4 +13,13 @@ export default {
   quantity: 1,
 
   total: 0,
+
+   allDistributors: [],
+      allDistributorsLoader: false,
+
+  searchFilters: {
+          distributors: ''
+      }
+
+
 };

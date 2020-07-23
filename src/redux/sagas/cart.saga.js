@@ -1,5 +1,5 @@
 import {put, call, take, select} from 'redux-saga/effects';
-
+import {DistributorService} from '../../utils/api/distributor.api';
 import {VisitsActions} from '../actions';
 
 export function* addItemToCart({payload}) {
@@ -24,8 +24,13 @@ export function* addItemToCart({payload}) {
 
   if (!itemAlreadyPresent) {
     cart.items.push(payload);
+    cart.items.map( obj=> {
+     obj.Quantity__c= 1
 
-    cart.items.Quantity__c = 1;
+     return obj.Quantity__c
+
+    })
+
   }
 
   yield put(VisitsActions.addItemToCartSuccess(cart));
@@ -61,4 +66,39 @@ export function* editCartOrder({payload}) {
   let cart = yield select(state => state.visits.cart);
   cart.order[payload.edited_field] = payload.edited_value;
   yield put(VisitsActions.editCartOrderSuccess(cart));
+}
+
+export function* getAllDistributor() {
+
+
+	try {
+		yield put(VisitsActions.getAllDistributorLoading());
+
+		const user = yield select(state => state.user);
+		const userId = user.id;
+   	 	const access_token = user. token
+
+
+		let successData = yield call(DistributorService.getAllDistributors, {access_token, userId, });
+		if (successData) {
+			let searchList = []
+			successData.map((obj) => {
+
+					searchList.push({
+						id: obj.Id,
+						name: obj.Name
+					});
+
+			});
+
+			searchList.push({id: 'ALL', name: 'ALL'})
+
+			yield put(VisitsActions.getAllDistributorSuccess({list: searchList}));
+
+		} else {
+			yield put(VisitsActions.getAllDistributorFailure());
+		}
+	} catch (error) {
+		yield put(VisitsActions.getAllDistributorFailure());
+	}
 }

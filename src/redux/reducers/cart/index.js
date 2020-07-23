@@ -56,6 +56,47 @@ const placeOrderFailure = (state, {payload}) => {
     placeOrderLoader: false,
   };
 };
+export const getAllDistributorSuccess = (state,  { payload }) => ({
+    ...state,
+     allDistributors: payload.list,
+     allDistributorsLoader: false
+});
+
+
+export const getAllDistributorFailure = (state) => ({
+    ...state,
+    allDistributors: [],
+   allDistributors: false
+});
+
+export const getAllDistributorLoading = (state) => ({
+    ...state,
+     allDistributorsLoader: true
+});
+
+
+export const getAllDistributorLoadingStop = (state) => ({
+    ...state,
+    allDistributorsLoader: false
+});
+
+export const  updateDistributorSearchFilters = (state, { payload }) => {
+  let updated_search_filters = _.cloneDeep(state.searchFilters);
+  updated_search_filters[payload.edited_field] = payload.edited_value;
+    return {
+        ...state,
+        searchFilters: {
+            ...state.searchFilters,
+            ...updated_search_filters
+        }
+    }
+}
+
+
+
+
+
+
 
 export default createReducer(INITIAL_STATE, {
   [VisitsTypes.ADD_ITEM_TO_CART_SUCCESS]: addItemToCartSuccess,
@@ -66,4 +107,12 @@ export default createReducer(INITIAL_STATE, {
   [VisitsTypes.PLACE_ORDER_LOADING_STOP]: placeOrderLoadingStop,
   [VisitsTypes.PLACE_ORDER_SUCCESS]: placeOrderSuccess,
   [VisitsTypes.PLACE_ORDER_FAILURE]: placeOrderFailure,
+
+   [VisitsTypes.GET_ALL_DISTRIBUTOR_SUCCESS]             :  getAllDistributorSuccess,
+      [VisitsTypes.GET_ALL_DISTRIBUTOR_FAILURE]             : getAllDistributorFailure,
+      [VisitsTypes.GET_ALL_DISTRIBUTOR_LOADING]             :  getAllDistributorLoading,
+      [VisitsTypes.GET_ALL_DISTRIBUTOR_LOADING_STOP]        : getAllDistributorLoadingStop,
+
+      [VisitsTypes.UPDATE_DISTRIBUTOR_SEARCH_FILTERS] :        updateDistributorSearchFilters
+
 });

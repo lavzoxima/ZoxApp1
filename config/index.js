@@ -10,5 +10,8 @@ export const Config = {
     "https://zx--dms2.my.salesforce.com/services/data/v45.0/query/?q=SELECT+ContentDocument.FileExtension,ContentDocumentId+FROM+ContentDocumentLink+WHERE+LinkedEntityId='__entityId__'",
   GET_ATTACHMENT_URL:
     'https://zx--dms2.my.salesforce.com/services/data/v45.0/connect/files/__attachmentId__/content?versionNumber=1',
+   GET_DISTRIBUTOR_ALL :
+   "https://zx--dms2.my.salesforce.com/services/data/v45.0/query/?q=SELECT+id,Name+FROM+Account+where+Type='Distributor'",
+
 };
 

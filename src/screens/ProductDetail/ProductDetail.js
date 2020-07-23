@@ -47,8 +47,7 @@ class CardImageExample extends Component {
             <Title style={styles.title}>Casual Wear</Title>
           </Body>
         </Header>
-
-        <Content>
+ <Content>
           <Card>
 
             <CardItem cardBody>
@@ -63,13 +62,13 @@ class CardImageExample extends Component {
 
 
             </CardItem>
-        </Card>
-    <Card>
+
+
     <CardItem>
     <Text style={styles.heading1}> {data.Name} </Text>
     </CardItem>
 
-     <CardItem>
+     <CardItem style={{marginBottom: hp('2%')}}>
    <View>
 
 
@@ -96,13 +95,13 @@ class CardImageExample extends Component {
 
 
 
-
+                    <Right style={{marginLeft:wp('25%')}}>
                             <ProductCounter
                                         id={id}
                                         data={data}
                                         Size={25}
 
-                                       />
+                                       /></Right>
 
             </CardItem>
 

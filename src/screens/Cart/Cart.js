@@ -24,10 +24,13 @@ import FooterScreen from '../Footer';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {ServerImage} from '../../components';
 import { ProductCounter} from '../../components';
+import DistributorScreen from './DistributorScreen'
 
 class ListExample extends Component {
   componentDidMount() {
     const {cart} = this.props;
+
+    this.props.getAllDistributor();
   }
 
 
@@ -144,16 +147,7 @@ class ListExample extends Component {
           </Card>
           <Card style={{marginLeft: '2.5%', marginRight: '2.5%', marginTop: '5%' }}>
             <CardItem>
-              <Left>
-                <Text style={styles.Distributor}> Select Distributor </Text>
-              </Left>
-              <Right>
-                <MaterialIcons
-                  style={styles.arrow1}
-                  name="keyboard-arrow-up"
-                  size={wp('6%')}
-                />
-              </Right>
+                     <DistributorScreen/>
             </CardItem>
 
           </Card>
@@ -270,6 +264,8 @@ const mapDispatchToProps = dispatch => ({
   addItemToCart: params => dispatch(VisitsActions.addItemToCart(params)),
   removeItemFromCart: params =>
     dispatch(VisitsActions.removeItemFromCart(params)),
+   getAllDistributor: params => dispatch( VisitsActions.getAllDistributor(params)),
+    updateSearchFilters: (params)    => dispatch(VisitsActions.updateDistributorSearchFilters(params))
 });
 
 export default connect(

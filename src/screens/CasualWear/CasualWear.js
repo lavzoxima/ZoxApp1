@@ -59,9 +59,9 @@ class CasualWearScreen extends Component {
               height: hp('15%'),
               paddingHorizontal: 20,
             }}>
-            <Text>{item.Name}</Text>
-            <Text style={{color: 'grey', fontSize: wp('4%')}} />
-            <Text style={{fontSize: wp('4%'), fontWeight: 'bold', color: '#c4402f'}}>
+            <Text style={{fontSize: wp('3.5%'),color: '#a9a9a9', fontWeight:"bold" }}>{item.Name}</Text>
+
+            <Text style={{fontSize: wp('4%'), fontWeight: 'bold', color: '#c4402f', marginTop:hp('2%')}}>
               {item.Products_Pricing__r.records.map( obj1 => {
 
               return obj1.Customer_Price__c;
@@ -87,6 +87,7 @@ class CasualWearScreen extends Component {
                     fontSize: 15,
                     textDecorationLine: 'line-through',
                     textDecorationStyle: 'solid',
+
                   }}>
                   {item.Products_Pricing__r.records.map(
                                                             obj1 => {
@@ -98,6 +99,7 @@ class CasualWearScreen extends Component {
                 ({this.props.savings}% OFF)
               </Text>
             </View>
+            <View style={{marginTop: hp('1%')}}>
             <StarRating
               disabled={true}
               maxStars={5}
@@ -106,6 +108,7 @@ class CasualWearScreen extends Component {
               fullStarColor="orange"
               emptyStarColor="orange"
             />
+            </View>
           </Right>
         </CardItem>
       </Card>
