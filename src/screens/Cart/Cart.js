@@ -23,8 +23,9 @@ import {VisitsActions} from '../../redux/actions';
 import FooterScreen from '../Footer';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {ServerImage} from '../../components';
-import { ProductCounter} from '../../components';
+import { ProductCounter, showToast} from '../../components';
 import DistributorScreen from './DistributorScreen'
+import { createOrderDetails } from '../../utils/api/cart.api';
 
 class ListExample extends Component {
   componentDidMount() {
@@ -33,7 +34,74 @@ class ListExample extends Component {
     this.props.getAllDistributor();
   }
 
+  getDataToPostToCreateOrder = () => {
+    let { cart: {items} = {}, distributor } = this.props;
+    let currentDate = new Date();
+    let orderLineItems = [];
+    items.forEach((item, index) => {
+      let productPrice = null;
+      try {
+        productPrice = item.Data.Products_Pricing__r.records[0].Customer_Price__c;
+      } catch(err) {}
+      orderLineItems.push({
+        attributes: {type: 'E_Order_line__c', referenceId: `ref${index + 2}`},
+        Product_Category__c: null,
+        Product_Sub_Category__c: null,
+        Product_Group__c: (item && item.Data && item.Data.Product_Group__c) || null,
+        Product__c: (item && item.Data && item.Data.id) ||  (item && item.item__c) || null,
+        Quantity__c: (item && item.Quantity__c) || null,
+        Discount__c: null,
+        Amount_Net_cost__c: productPrice,
+        CGST__c: null,
+        SGST_UTGST__c: null,
+        IGST__c: null,
+      });
+    });
+    return {
+      records: [
+        {
+          attributes: {type: 'E_Order__c', referenceId: 'ref1'},
+          Distributor__c: distributor,
+          Order_Delivery__c: 'Pending',
+          Bill_To_Customer__c: null,
+          Order_Date__c: `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`,
+          Scheme__c: null,
+          Discount__c: null,
+          Billing_City__c: null,
+          BIlling_Country__c: null,
+          Billing_State__c: null,
+          Billing_Street__c: null,
+          Billing_Zip_PostalCode__c: null,
+          Street__c: null,
+          State__c: null,
+          City__c: null,
+          Country__c: null,
+          E_Order_lines__r: {
+            records: orderLineItems,
+          },
+        },
+      ]
+    }
+  }
 
+  onPlaceOrderClick = () => {
+    let { cart: {items} = {}, distributor, token } = this.props;
+    if (!items || !items.length) {
+      showToast("Please add products in cart");
+      return;
+    }
+    if (!distributor) {
+      showToast("Please select distributor");
+      return;
+    }
+    let createOrderApiData = this.getDataToPostToCreateOrder();
+    createOrderDetails(createOrderApiData, token).then(res => {
+      showToast("Order created successfully", 1000);
+    }).catch(err => {
+      showToast("Unable to create order.", 1000);
+      console.warn("order create error: ", err.message);
+    })
+  }
 
   renderListItem(item, index) {
     return (
@@ -221,7 +289,7 @@ class ListExample extends Component {
              </View>
             </Left>
              <Right>
-                                    <Button rounded  style={styles.fbtn}>
+                                    <Button rounded  style={styles.fbtn} onPress={this.onPlaceOrderClick}>
                                                <Text>
                                                  <Text style={styles.fbtxt}>Place Order </Text>
                                                  <Text>
@@ -259,6 +327,7 @@ const mapStateToProps = state => ({
   cart: state.visits.cart,
   quantity: state.visits.quantity,
   total: state.visits.total,
+  distributor: state.visits.searchFilters.distributors
 });
 const mapDispatchToProps = dispatch => ({
   addItemToCart: params => dispatch(VisitsActions.addItemToCart(params)),
